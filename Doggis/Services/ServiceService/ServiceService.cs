@@ -13,9 +13,9 @@ namespace Doggis.Services.ServiceService
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Product> Get()
+        public IEnumerable<Service> Get()
         {
-            return _unitOfWork.Product.Get();
+            return _unitOfWork.Service.Get();
         }
     }
 }

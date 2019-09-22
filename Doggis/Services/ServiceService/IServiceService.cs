@@ -8,6 +8,6 @@ namespace Doggis.Services.ServiceService
 {
     public interface IServiceService
     {
-        IEnumerable<Product> Get();
+        IEnumerable<Service> Get();
     }
 }
