@@ -18,7 +18,7 @@ namespace Doggis.Controllers
 
         public ActionResult Index()
         {
-            var aux = _serviceService.Get();
+            var aux = _serviceService.Get().ToList();
             return View();
         }
 

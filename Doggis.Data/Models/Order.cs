@@ -10,6 +10,6 @@ namespace Doggis.Data.Models
         public string ProtocolNumber { get; set; }
         public bool Paid { get; set; }
         public int PaymentType { get; set; }
-        public string TotalPrice { get; set; }
+        public decimal TotalPrice { get; set; }
     }
 }

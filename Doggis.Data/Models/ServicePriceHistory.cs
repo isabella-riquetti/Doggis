@@ -10,7 +10,7 @@ namespace Doggis.Data.Models
     {
         public Guid ID { get; set; }
         public Guid ServiceID { get; set; }
-        public string Price { get; set; }
+        public decimal Price { get; set; }
         public DateTime StartDate { get; set; }
         public Guid CreatedBy { get; set; }
         public DateTime EndDate { get; set; }
