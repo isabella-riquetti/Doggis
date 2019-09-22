@@ -25,6 +25,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.CouncilNumber).HasColumnName("CouncilNumber").HasMaxLength(50);
             Property(p => p.EntryTime).HasColumnName("EntryTime");
             Property(p => p.DepartureTime).HasColumnName("DepartureTime");
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

@@ -24,6 +24,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.Price).HasColumnName("Price").IsRequired();
             Property(p => p.Inventory).HasColumnName("Inventory").IsRequired();
             Property(p => p.Category).HasColumnName("Category");
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

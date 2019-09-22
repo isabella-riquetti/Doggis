@@ -17,6 +17,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.Paid).HasColumnName("Paid");
             Property(p => p.PaymentType).HasColumnName("PaymentType");
             Property(p => p.TotalPrice).HasColumnName("TotalPrice");
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

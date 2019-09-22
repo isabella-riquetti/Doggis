@@ -15,6 +15,7 @@ namespace Doggis.Data.Models
         public Enum.User.UserType Responsable { get; set; }
         public int PatazGiven { get; set; }
         public int PatazPrice { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<ServicePriceHistory> ServicePriceHistories { get; set; }
         public virtual ICollection<ServiceSchedule> ServiceSchedules { get; set; }

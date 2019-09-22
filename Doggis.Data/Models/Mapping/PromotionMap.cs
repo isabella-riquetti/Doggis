@@ -23,6 +23,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.StartDate).HasColumnName("StartDate").IsRequired();
             Property(p => p.EndDate).HasColumnName("EndDate").IsRequired();
             Property(p => p.Percentage).HasColumnName("Percentage").IsRequired();
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

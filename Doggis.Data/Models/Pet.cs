@@ -17,6 +17,7 @@ namespace Doggis.Data.Models
         public string Alergies { get; set; }
         public string Description { get; set; }
         public bool AllowsPhotos { get; set; }
+        public bool Status { get; set; }
 
         public virtual Client Owner { get; set; }
 

@@ -25,6 +25,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.City).HasColumnName("City").IsRequired().HasMaxLength(100);
             Property(p => p.State).HasColumnName("State").IsRequired().HasMaxLength(2);
             Property(p => p.Pataz).HasColumnName("Pataz").IsRequired();
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

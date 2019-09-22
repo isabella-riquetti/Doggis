@@ -24,6 +24,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.Responsable).HasColumnName("Responsable").IsRequired();
             Property(p => p.PatazGiven).HasColumnName("PatazGiven").IsRequired();
             Property(p => p.PatazPrice).HasColumnName("PatazPrice").IsRequired();
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
         }
     }
 }

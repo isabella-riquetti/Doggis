@@ -14,6 +14,7 @@ namespace Doggis.Data.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int Percentage { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 

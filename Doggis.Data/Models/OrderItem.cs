@@ -16,6 +16,7 @@ namespace Doggis.Data.Models
         public decimal OriginalPrice { get; set; }
         public Guid? PromotionID { get; set; }
         public decimal PaidPrice { get; set; }
+        public bool Status { get; set; }
 
         public virtual Order Order { get; set; }
         public virtual ServiceSchedule ServiceSchedule { get; set; }

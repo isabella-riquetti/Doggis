@@ -16,6 +16,7 @@ namespace Doggis.Data.Models
         public string CouncilNumber { get; set; }
         public TimeSpan? EntryTime { get; set; }
         public TimeSpan? DepartureTime { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<ServicePriceHistory> ServicesPriceHistoryCreatedBy { get; set; }
         public virtual ICollection<ServicePriceHistory> ServicesPriceHistoryDisabledBy { get; set; }

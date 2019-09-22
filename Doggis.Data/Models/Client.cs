@@ -19,6 +19,7 @@ namespace Doggis.Data.Models
         public string City { get; set; }
         public string State { get; set; }
         public int Pataz { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<Pet> Pets { get; set; }
         public virtual ICollection<ServiceSchedule> ServiceSchedules { get; set; }

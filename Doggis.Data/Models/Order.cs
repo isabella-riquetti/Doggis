@@ -11,6 +11,7 @@ namespace Doggis.Data.Models
         public bool? Paid { get; set; }
         public Enum.Order.PaymentType? PaymentType { get; set; }
         public decimal? TotalPrice { get; set; }
+        public bool Status { get; set; }
 
         public virtual ICollection<OrderItem> OrderItems { get; set; }
 

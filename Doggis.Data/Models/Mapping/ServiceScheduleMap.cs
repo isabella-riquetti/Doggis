@@ -24,6 +24,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.PetID).HasColumnName("PetID").IsRequired();
             Property(p => p.ResponsibleID).HasColumnName("ResponsibleID").IsRequired();
             Property(p => p.Finished).HasColumnName("Finished");
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
 
             HasRequired(t => t.Service)
                 .WithMany(t => t.ServiceSchedules)

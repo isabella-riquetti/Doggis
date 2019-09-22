@@ -25,6 +25,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.OriginalPrice).HasColumnName("OriginalPrice").IsRequired();
             Property(p => p.PromotionID).HasColumnName("PromotionID");
             Property(p => p.PaidPrice).HasColumnName("PaidPrice").IsRequired();
+            Property(p => p.Status).HasColumnName("Status").IsRequired();
 
             HasRequired(t => t.Order)
                 .WithMany(t => t.OrderItems)

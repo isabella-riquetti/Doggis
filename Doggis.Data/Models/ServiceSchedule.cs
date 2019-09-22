@@ -15,6 +15,7 @@ namespace Doggis.Data.Models
         public Guid PetID { get; set; }
         public Guid ResponsibleID { get; set; }
         public bool Finished { get; set; }
+        public bool Status { get; set; }
 
         public virtual Service Service { get; set; }
         public virtual Client Client { get; set; }
