@@ -1,4 +1,5 @@
-﻿using Doggis.Services.ServiceService;
+﻿using Doggis.Services;
+using Doggis.Services.ServiceService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,9 @@ namespace Doggis.Controllers
 
         public ActionResult Index()
         {
-            var aux = _serviceService.Get().ToList();
+            SessionContext.IsAdmin = true;
+            SessionContext.IsAttendant = false;
+            SessionContext.IsClient = true;
             return View();
         }
 
