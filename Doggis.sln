@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29306.81
@@ -6,6 +6,8 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doggis", "Doggis\Doggis.csproj", "{1C2C30AC-5AF9-4217-BA85-852070D2EFBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doggis.Tests", "Doggis.Tests\Doggis.Tests.csproj", "{4EE2F772-F1C9-4671-A4E1-4099F36450FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doggis.Data", "Doggis.Data\Doggis.Data.csproj", "{653781A2-F4DC-4A99-91F7-E72191658275}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4EE2F772-F1C9-4671-A4E1-4099F36450FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EE2F772-F1C9-4671-A4E1-4099F36450FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EE2F772-F1C9-4671-A4E1-4099F36450FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{653781A2-F4DC-4A99-91F7-E72191658275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{653781A2-F4DC-4A99-91F7-E72191658275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{653781A2-F4DC-4A99-91F7-E72191658275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{653781A2-F4DC-4A99-91F7-E72191658275}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
