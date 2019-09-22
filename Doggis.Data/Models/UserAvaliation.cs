@@ -10,7 +10,10 @@ namespace Doggis.Data.Models
     {
         public Guid ID { get; set; }
         public Guid ClientID { get; set; }
-        public Guid ScheduleID { get; set; }
+        public Guid ServiceScheduleID { get; set; }
         public int Avaliation { get; set; }
+
+        public virtual Client Client { get; set; }
+        public virtual ServiceSchedule Schedule { get; set; }
     }
 }

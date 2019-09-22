@@ -19,8 +19,18 @@ namespace Doggis.Data.Models.Mapping
             ToTable("UserAvaliation");
             Property(p => p.ID).HasColumnName("ID");
             Property(p => p.ClientID).HasColumnName("ClientID").IsRequired();
-            Property(p => p.ScheduleID).HasColumnName("ScheduleID").IsRequired();
+            Property(p => p.ServiceScheduleID).HasColumnName("ScheduleID").IsRequired();
             Property(p => p.Avaliation).HasColumnName("Avaliation").IsRequired();
+
+            HasRequired(t => t.Client)
+                .WithMany(t => t.Avaliations)
+                .HasForeignKey(d => d.ClientID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.Schedule)
+                .WithMany(t => t.Avaliations)
+                .HasForeignKey(d => d.ServiceScheduleID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

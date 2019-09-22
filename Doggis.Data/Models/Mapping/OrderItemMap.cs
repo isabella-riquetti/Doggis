@@ -25,6 +25,26 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.OriginalPrice).HasColumnName("OriginalPrice").IsRequired();
             Property(p => p.PromotionID).HasColumnName("PromotionID");
             Property(p => p.PaidPrice).HasColumnName("PaidPrice").IsRequired();
+
+            HasRequired(t => t.Order)
+                .WithMany(t => t.OrderItems)
+                .HasForeignKey(d => d.OrderID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.ServiceSchedule)
+                .WithMany(t => t.OrderItems)
+                .HasForeignKey(d => d.ServiceScheduleID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.Product)
+                .WithMany(t => t.OrderItems)
+                .HasForeignKey(d => d.ProductID)
+                .WillCascadeOnDelete(false);
+
+            HasOptional(t => t.Promotion)
+                .WithMany(t => t.OrderItems)
+                .HasForeignKey(d => d.PromotionID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

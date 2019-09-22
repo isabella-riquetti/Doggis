@@ -22,8 +22,28 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.Schedule).HasColumnName("Schedule").IsRequired();
             Property(p => p.ClientID).HasColumnName("ClientID").IsRequired();
             Property(p => p.PetID).HasColumnName("PetID").IsRequired();
-            Property(p => p.ResponsibleID).HasColumnName("ResponsibleID");
+            Property(p => p.ResponsibleID).HasColumnName("ResponsibleID").IsRequired();
             Property(p => p.Finished).HasColumnName("Finished");
+
+            HasRequired(t => t.Service)
+                .WithMany(t => t.ServiceSchedules)
+                .HasForeignKey(d => d.ServiceID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.Client)
+                .WithMany(t => t.ServiceSchedules)
+                .HasForeignKey(d => d.ClientID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.Pet)
+                .WithMany(t => t.ServiceSchedules)
+                .HasForeignKey(d => d.PetID)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(t => t.Responsible)
+                .WithMany(t => t.ServiceSchedulesResponsibleFor)
+                .HasForeignKey(d => d.ResponsibleID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

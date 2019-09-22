@@ -6,9 +6,13 @@ using System.Threading.Tasks;
 
 namespace Doggis.Data.Enum
 {
-    public enum ClientStatus
+    public class Product
     {
-        Active = 1,
-        Inactive
+        public enum Category
+        {
+            Cleaning = 0,
+            Food = 1,
+            Health = 2
+        }
     }
 }

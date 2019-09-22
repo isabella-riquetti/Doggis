@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Doggis.Data.Models.Mapping
 {
-    public class VeterinaryAllowedSpeciesMap : EntityTypeConfiguration<VeterinaryAllowedSpecies>
+    public class VeterinaryAllowedSpecieMap : EntityTypeConfiguration<VeterinaryAllowedSpecie>
     {
-        public VeterinaryAllowedSpeciesMap()
+        public VeterinaryAllowedSpecieMap()
         {
             // Primary Key
             HasKey(t => t.ID);
@@ -20,6 +20,11 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.ID).HasColumnName("ID");
             Property(p => p.VeterinaryID).HasColumnName("VeterinaryID").IsRequired();
             Property(p => p.Specie).HasColumnName("Specie").IsRequired();
+
+            HasRequired(t => t.Veterinary)
+                .WithMany(t => t.VeterinaryAllowedSpecies)
+                .HasForeignKey(d => d.VeterinaryID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

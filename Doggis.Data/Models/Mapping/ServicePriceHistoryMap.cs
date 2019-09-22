@@ -24,6 +24,11 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.CreatedBy).HasColumnName("CreatedBy").IsRequired();
             Property(p => p.EndDate).HasColumnName("EndDate");
             Property(p => p.DisabledBy).HasColumnName("DisabledBy");
+
+            HasRequired(t => t.Service)
+                .WithMany(t => t.ServicePriceHistories)
+                .HasForeignKey(d => d.ServiceID)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Doggis.Data.Models
 {
-    public class VeterinaryAllowedSpecies
+    public class VeterinaryAllowedSpecie
     {
         public Guid ID { get; set; }
         public Guid VeterinaryID { get; set; }
-        public int Specie { get; set; }
+        public Enum.Pet.Specie Specie { get; set; }
+
+        public virtual User Veterinary { get; set; }
     }
 }

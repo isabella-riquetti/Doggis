@@ -16,5 +16,18 @@ namespace Doggis.Data.Models
         public Guid ResponsibleID { get; set; }
         public bool Finished { get; set; }
 
+        public virtual Service Service { get; set; }
+        public virtual Client Client { get; set; }
+        public virtual Pet Pet { get; set; }
+        public virtual User Responsible { get; set; }
+
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+        public virtual ICollection<UserAvaliation> Avaliations { get; set; }
+
+        public ServiceSchedule()
+        {
+            OrderItems = new List<OrderItem>();
+            Avaliations = new List<UserAvaliation>();
+        }
     }
 }

@@ -20,11 +20,11 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.ID).HasColumnName("ID");
             Property(p => p.Name).HasColumnName("Name").IsRequired().HasMaxLength(255);
             Property(p => p.Type).HasColumnName("Type").IsRequired();
-            Property(p => p.Identification).HasColumnName("Identification").IsRequired().HasMaxLength(13);
-            Property(p => p.NationalInsuranceNumber).HasColumnName("NationalInsuranceNumber").IsRequired().HasMaxLength(14);
-            Property(p => p.CouncilNumber).HasColumnName("CouncilNumber").IsRequired().HasMaxLength(50);
-            Property(p => p.EntryTime).HasColumnName("EntryTime").IsRequired();
-            Property(p => p.DepartureTime).HasColumnName("DepartureTime").IsRequired();
+            Property(p => p.Identification).HasColumnName("Identification").HasMaxLength(13);
+            Property(p => p.NationalInsuranceNumber).HasColumnName("NationalInsuranceNumber").HasMaxLength(14);
+            Property(p => p.CouncilNumber).HasColumnName("CouncilNumber").HasMaxLength(50);
+            Property(p => p.EntryTime).HasColumnName("EntryTime");
+            Property(p => p.DepartureTime).HasColumnName("DepartureTime");
         }
     }
 }

@@ -12,8 +12,17 @@ namespace Doggis.Data.Models
         public string Name { get; set; }
         public TimeSpan EstimatedTime { get; set; }
         public decimal Price { get; set; }
-        public int Responsable { get; set; }
+        public Enum.User.UserType Responsable { get; set; }
         public int PatazGiven { get; set; }
         public int PatazPrice { get; set; }
+
+        public virtual ICollection<ServicePriceHistory> ServicePriceHistories { get; set; }
+        public virtual ICollection<ServiceSchedule> ServiceSchedules { get; set; }
+
+        public Service()
+        {
+            ServicePriceHistories = new List<ServicePriceHistory>();
+            ServiceSchedules = new List<ServiceSchedule>();
+        }
     }
 }

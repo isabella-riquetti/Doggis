@@ -14,7 +14,13 @@ namespace Doggis.Data.Models
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int Inventory { get; set; }
-        public int Category { get; set; }
+        public Enum.Product.Category? Category { get; set; }
 
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
+
+        public Product()
+        {
+            OrderItems = new List<OrderItem>();
+        }
     }
 }

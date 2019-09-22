@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Doggis.Data.Repository
 {
-    public class VeterinaryAllowedSpeciesRepository : RepositoryBase<Doggis.Data.Models.VeterinaryAllowedSpecies>, IVeterinaryAllowedSpeciesRepository
+    public class VeterinaryAllowedSpeciesRepository : RepositoryBase<Doggis.Data.Models.VeterinaryAllowedSpecie>, IVeterinaryAllowedSpeciesRepository
     {
         private readonly DoggisContext _context;
 

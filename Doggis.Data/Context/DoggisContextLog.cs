@@ -36,7 +36,7 @@ namespace Doggis.Data.Repository
         public DbSet<ServiceSchedule> ServiceSchedule { get; set; }
         public DbSet<User> User { get; set; }
         public DbSet<UserAvaliation> UserAvaliation { get; set; }
-        public DbSet<VeterinaryAllowedSpecies> VeterinaryAllowedSpecies { get; set; }
+        public DbSet<VeterinaryAllowedSpecie> VeterinaryAllowedSpecies { get; set; }
 
         public StoredProcedures StoredProcedures { get; set; }
         public ScalarValuedFunctions ScalarValuedFunctions { get; set; }
@@ -55,7 +55,7 @@ namespace Doggis.Data.Repository
             modelBuilder.Configurations.Add(new ServiceScheduleMap());
             modelBuilder.Configurations.Add(new UserMap());
             modelBuilder.Configurations.Add(new UserAvaliationMap());
-            modelBuilder.Configurations.Add(new VeterinaryAllowedSpeciesMap());
+            modelBuilder.Configurations.Add(new VeterinaryAllowedSpecieMap());
         }
     }
 }

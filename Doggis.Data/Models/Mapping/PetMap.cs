@@ -26,6 +26,11 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.Alergies).HasColumnName("Alergies").HasMaxLength(255);
             Property(p => p.Description).HasColumnName("Description").HasMaxLength(1000);
             Property(p => p.AllowsPhotos).HasColumnName("AllowsPhotos").IsRequired();
+
+            HasRequired(t => t.Owner)
+                .WithMany(t => t.Pets)
+                .HasForeignKey(d => d.OwnerId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -124,7 +124,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\ClientStatus.cs" />
+    <Compile Include="Enum\Helper\EnumHelper.cs" />
+    <Compile Include="Enum\Order.cs" />
+    <Compile Include="Enum\OrderItem.cs" />
+    <Compile Include="Enum\Pet.cs" />
+    <Compile Include="Enum\Product.cs" />
+    <Compile Include="Enum\User.cs" />
     <Compile Include="Models\Mapping\OrderItemMap.cs" />
     <Compile Include="Models\Mapping\ClientMap.cs" />
     <Compile Include="Models\Client.cs" />
@@ -137,7 +142,7 @@
     <Compile Include="Models\Mapping\ServiceScheduleMap.cs" />
     <Compile Include="Models\Mapping\UserAvaliationMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
-    <Compile Include="Models\Mapping\VeterinaryAllowedSpeciesMap.cs" />
+    <Compile Include="Models\Mapping\VeterinaryAllowedSpecieMap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Pet.cs" />

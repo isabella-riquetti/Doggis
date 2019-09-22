@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Doggis.Data.Repository
 {
-    public interface IVeterinaryAllowedSpeciesRepository : IRepositoryBase<Doggis.Data.Models.VeterinaryAllowedSpecies>
+    public interface IVeterinaryAllowedSpeciesRepository : IRepositoryBase<Doggis.Data.Models.VeterinaryAllowedSpecie>
     {
     }
 }
