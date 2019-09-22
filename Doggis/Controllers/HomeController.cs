@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Doggis.Services.ServiceService;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,16 @@ namespace Doggis.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IServiceService _serviceService;
+
+        public HomeController(IServiceService serviceService)
+        {
+            _serviceService = serviceService;
+        }
+
         public ActionResult Index()
         {
+            var aux = _serviceService.Get();
             return View();
         }
 
