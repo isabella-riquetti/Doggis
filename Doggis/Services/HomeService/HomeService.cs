@@ -19,44 +19,44 @@ namespace Doggis.Services
         public int GetPendingServiceScheduleCount()
         {
             var today = DateTime.Now.Brasilia();
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today).Count();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today && s.Status).Count();
         }
 
         public int GetClientCount()
         {
-            return _unitOfWork.Client.Get().Count();
+            return _unitOfWork.Client.Get(c => c.Status).Count();
         }
 
         public int GetPetCount()
         {
-            return _unitOfWork.Pet.Get().Count();
+            return _unitOfWork.Pet.Get(p => p.Status).Count();
         }
 
         public int GetOrderCount()
         {
-            return _unitOfWork.Order.Get().Count();
+            return _unitOfWork.Order.Get(o => o.Status).Count();
         }
 
         public int GetClientPendingAvaliationCount(Guid clientID)
         {
             var today = DateTime.Now.Brasilia();
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule < today && s.ClientID == clientID && s.Avaliations.Count() == 0).Count();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Status && s.Schedule < today && s.ClientID == clientID && s.Avaliations.Where(a => a.Status).Count() == 0).Count();
         }
 
         public int GetClientPendingServiceScheduleCount(Guid clientID)
         {
             var today = DateTime.Now.Brasilia();
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today && s.ClientID == clientID).Count();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today && s.ClientID == clientID && s.Status).Count();
         }
 
         public int GetClientPetCount(Guid clientID)
         {
-            return _unitOfWork.Pet.Get(p => p.OwnerId == clientID).Count();
+            return _unitOfWork.Pet.Get(p => p.OwnerId == clientID && p.Status).Count();
         }
 
         public int GetClientPataz(Guid clientID)
         {
-            return _unitOfWork.Client.FirstOrDefault(p => p.ID == clientID).Pataz;
+            return _unitOfWork.Client.FirstOrDefault(p => p.ID == clientID && p.Status).Pataz;
         }
     }
 }

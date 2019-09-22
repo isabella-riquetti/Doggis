@@ -30,16 +30,16 @@ namespace Doggis.Controllers
                 return View(new HomeViewModel()
                 {
                     Card1Icon = "schedule",
-                    Card1Title = "Agendamentos Futuros",
+                    Card1Title = "AGENDAMENTOS FUTUROS",
                     Card1Value = _homeService.GetClientPendingServiceScheduleCount(clientId).ToString(),
                     Card2Icon = "star",
-                    Card2Title = "Avaliações Pendentes",
+                    Card2Title = "AVALIAÇÕES PENDENTES",
                     Card2Value = _homeService.GetClientPendingAvaliationCount(clientId).ToString(),
                     Card3Icon = "loyalty",
-                    Card3Title = "Pataz",
+                    Card3Title = "PATAZ",
                     Card3Value = _homeService.GetClientPataz(clientId).ToString(),
                     Card4Icon = "pets",
-                    Card4Title = "Pets",
+                    Card4Title = "PETS",
                     Card4Value = _homeService.GetClientPetCount(clientId).ToString()
                 });
             }
@@ -48,16 +48,16 @@ namespace Doggis.Controllers
                 return View(new HomeViewModel()
                 {
                     Card1Icon = "schedule",
-                    Card1Title = "Agendamentos Futuros",
+                    Card1Title = "AGENDAMENTOS FUTUROS",
                     Card1Value = _homeService.GetPendingServiceScheduleCount().ToString(),
                     Card2Icon = "person",
-                    Card2Title = "Clientes Cadastrados",
+                    Card2Title = "CLIENTES CADASTRADOS",
                     Card2Value = _homeService.GetClientCount().ToString(),
                     Card3Icon = "pets",
-                    Card3Title = "Pets Cadastrados",
+                    Card3Title = "PETS CADASTRADOS",
                     Card3Value = _homeService.GetPetCount().ToString(),
                     Card4Icon = "monetization_on",
-                    Card4Title = "Pedidos Finalizados",
+                    Card4Title = "PEDIDOS FINALIZADOS",
                     Card4Value = _homeService.GetOrderCount().ToString()
                 });
             }

@@ -12,35 +12,41 @@
                 </h2>
             </div>
             <div class="body">
-                <div class="table-responsive">
-                    <table class="table table-bordered table-striped table-hover dataTable js-exportable">
-                        <thead>
-                            <tr>
-                                <th>Nome</th>
-                                <th>RG</th>
-                                <th>CPF</th>
-                                <th>Nº Conselho</th>
-                                <th>Horário de Entrada</th>
-                                <th>Horário de Saída</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @{ 
-                                foreach (var vet in Model)
-                                {
-                                    <tr id="@vet.ID">
-                                        <td>@vet.Name</td>
-                                        <td>@vet.Identification</td>
-                                        <td>@vet.NationalInsuranceNumber</td>
-                                        <td>@vet.CouncilNumber</td>
-                                        <td>@vet.EntryTime</td>
-                                        <td>@vet.DepartureTime</td>
-                                    </tr>
-                                }
+                <button type="button" class="btn btn-primary waves-effect">
+                    <i class="material-icons">add</i>
+                    <span>Novo</span>
+                </button>
+            </div>            
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>RG</th>
+                            <th>CPF</th>
+                            <th>Nº Conselho</th>
+                            <th>Horário de Entrada</th>
+                            <th>Horário de Saída</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var vet in Model)
+                            {
+                                <tr id="@vet.ID">
+                                    <td>@vet.Name</td>
+                                    <td>@vet.Identification</td>
+                                    <td>@vet.NationalInsuranceNumber</td>
+                                    <td>@vet.CouncilNumber</td>
+                                    <td>@vet.EntryTime</td>
+                                    <td>@vet.DepartureTime</td>
+                                    <td><a href="@Url.Action("Edit", "Veterinary")">Editar</a></td>
+                                </tr>
                             }
-                        </tbody>
-                    </table>
-                </div>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -50,9 +56,4 @@
 @Scripts.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
 @Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js")
 @Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/buttons.flash.min.js")
-@Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/jszip.min.js")
-@Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/pdfmake.min.js")
-@Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/vfs_fonts.js")
-@Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/buttons.html5.min.js")
-@Scripts.Render("~/Content/plugins/jquery-datatable/extensions/export/buttons.print.min.js")
 @Scripts.Render("~/Content/js/pages/tables/jquery-datatable.js")
