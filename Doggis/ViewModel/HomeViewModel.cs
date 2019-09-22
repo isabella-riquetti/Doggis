@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Doggis.ViewModel
 {
-    public class UserHomeData
+    public class HomeViewModel
     {
         public string Card1Title { get; set; }
         public string Card1Value { get; set; }

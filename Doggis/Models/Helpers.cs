@@ -51,6 +51,21 @@ namespace Doggis.Models
             return "Não Identificado";
         }
 
+        public static Guid GetLoggedUserId()
+        {
+            var claimsIdentity = System.Web.HttpContext.Current.User.Identity as System.Security.Claims.ClaimsIdentity;
+            if (claimsIdentity != null)
+            {
+                var claim = claimsIdentity.Claims
+                    .FirstOrDefault(x => x.Type == System.Security.Claims.ClaimTypes.NameIdentifier);
+
+                if (claim != null)
+                    return new Guid(claim.Value);
+            }
+
+            return Guid.NewGuid();
+        }
+
         public static DateTime Brasilia(this DateTime data)
         {
             var utc = DateTime.UtcNow;

@@ -5,7 +5,7 @@ Licensed under the BSD-2-Clause License.
 */
 
 
-(function() {
+$(document).ready(function() {
   var $, Morris, minutesSpecHelper, secondsSpecHelper,
     __slice = [].slice,
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
@@ -1652,8 +1652,8 @@ Licensed under the BSD-2-Clause License.
       } else {
         this.el = $(options.element);
       }
-      if (this.el === null || this.el.length === 0) {
-        throw new Error("Graph placeholder not found.");
+        if (this.el === null || this.el.length === 0) {
+            return;
       }
       if (options.data === void 0 || options.data.length === 0) {
         return;
@@ -1889,4 +1889,4 @@ Licensed under the BSD-2-Clause License.
 
   })(Morris.EventEmitter);
 
-}).call(this);
+});

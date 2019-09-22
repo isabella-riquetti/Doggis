@@ -9,35 +9,20 @@
     <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <!-- Favicon-->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 
-    <!-- Google Fonts -->
     @Styles.Render("https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext")
     @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
 
-    <!-- Bootstrap Core Css -->
     @Styles.Render("~/Content/plugins/bootstrap/css/bootstrap.css")
-
-    <!-- Waves Effect Css -->
     @Styles.Render("~/Content/plugins/node-waves/waves.css")
-
-    <!-- Animation Css -->
     @Styles.Render("~/Content/plugins/animate-css/animate.css")
-
-    <!-- Morris Chart Css-->
     @Styles.Render("~/Content/plugins/morrisjs/morris.css")
-
-    <!-- Custom Css -->
     @Styles.Render("~/Content/css/style.css")
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     @Styles.Render("~/Content/css/themes/all-themes.css")
 </head>
 
 <body class="theme-red">
-
-    <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
             <div class="preloader">
@@ -53,11 +38,7 @@
             <p>Por favor, aguarde...</p>
         </div>
     </div>
-    <!-- #END# Page Loader -->
-    <!-- Overlay For Sidebars -->
     <div class="overlay"></div>
-    <!-- #END# Overlay For Sidebars -->
-    <!-- Top Bar -->
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -67,11 +48,8 @@
             </div>
         </div>
     </nav>
-    <!-- #Top Bar -->
     <section>
-        <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
-            <!-- User Info -->
             <div class="user-info">
                 <div class="image">
                     <img src="~/Content/images/user.jpg" width="48" height="48" alt="User" />
@@ -87,13 +65,11 @@
                     </div>
                 </div>
             </div>
-            <!-- #User Info -->
-            <!-- Menu -->
             <div class="menu">
                 <ul class="list">
                     @{
                         <li class="active">
-                            <a href="index.html">
+                            <a href="@Url.Action("Index", "Home")">
                                 <i class="material-icons">home</i>
                                 <span>Ínicio</span>
                             </a>
@@ -102,31 +78,31 @@
                         {
                             <li class="header">Administrador</li>
                             <li>
-                                <a href="index.html">
-                                    <i class="material-icons">playlist_add</i>
+                                <a href="@Url.Action("Error", "Home")">
+                                    <i class="material-icons">work</i>
                                     <span>Serviços</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/typography.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">add_shopping_cart</i>
                                     <span>Produtos</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/helper-classes.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">money_off</i>
                                     <span>Promoções</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/helper-classes.html">
+                                <a href="@Url.Action("Index", "Veterinary")">
                                     <i class="material-icons">healing</i>
                                     <span>Veterinários</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/helper-classes.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">add_box</i>
                                     <span>Entrada de Produtos</span>
                                 </a>
@@ -138,13 +114,13 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Serviços por Profissional</a>
+                                        <a href="@Url.Action("Error", "Home")">Serviços por Profissional</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Serviços por Cliente</a>
+                                        <a href="@Url.Action("Error", "Home")">Serviços por Cliente</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Avaliações de Profissionais</a>
+                                        <a href="@Url.Action("Error", "Home")">Avaliações de Profissionais</a>
                                     </li>
                                 </ul>
                             </li>
@@ -153,7 +129,7 @@
                         {
                             <li class="header">Atendentes</li>
                             <li>
-                                <a href="pages/helper-classes.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">monetization_on</i>
                                     <span>Fechar Pedido</span>
                                 </a>
@@ -162,13 +138,13 @@
                         if (Doggis.Models.Helpers.CurrentUserHasPermission("IsAttendant"))
                         {
                             <li>
-                                <a href="index.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">person</i>
                                     <span>Clientes</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/typography.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">pets</i>
                                     <span>Pets</span>
                                 </a>
@@ -180,13 +156,13 @@
                                 </a>
                                 <ul class="ml-menu">
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Agendar</a>
+                                        <a href="@Url.Action("Error", "Home")">Agendar</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Finalizar com Pagamento</a>
+                                        <a href="@Url.Action("Error", "Home")">Finalizar com Pagamento</a>
                                     </li>
                                     <li>
-                                        <a href="pages/widgets/infobox/infobox-1.html">Registrar Ausência</a>
+                                        <a href="@Url.Action("Error", "Home")">Registrar Ausência</a>
                                     </li>
                                 </ul>
                             </li>
@@ -195,19 +171,19 @@
                         {
                             <li class="header">Cliente</li>
                             <li>
-                                <a href="index.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">pageview</i>
                                     <span>Visualizar Serviços Realizados</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/typography.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">loyalty</i>
                                     <span>Consultar Pataz</span>
                                 </a>
                             </li>
                             <li>
-                                <a href="pages/typography.html">
+                                <a href="@Url.Action("Error", "Home")">
                                     <i class="material-icons">star</i>
                                     <span>Avaliar Profissional</span>
                                 </a>
@@ -216,62 +192,34 @@
                     }
                 </ul>
             </div>
-            <!-- #Menu -->
         </aside>
-        <!-- #END# Left Sidebar -->
     </section>
 
-    <section class="content">
-        <div class="container-fluid">
-            <div class="block-header">
-                <h2>Menu Principal</h2>
-            </div>
-            @RenderBody()
-        </div>
-    </section>
-
-    <!-- Jquery Core Js -->
     @Scripts.Render("~/Content/plugins/jquery/jquery.min.js")
-
-    <!-- Bootstrap Core Js -->
     @Scripts.Render("~/Content/plugins/bootstrap/js/bootstrap.js")
-
-    <!-- Select Plugin Js -->
     @Scripts.Render("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")
-
-    <!-- Slimscroll Plugin Js -->
     @Scripts.Render("~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js")
-
-    <!-- Waves Effect Plugin Js -->
     @Scripts.Render("~/Content/plugins/node-waves/waves.js")
-
-    <!-- Jquery CountTo Plugin Js -->
     @Scripts.Render("~/Content/plugins/jquery-countto/jquery.countTo.js")
-
-    <!-- Morris Plugin Js -->
     @Scripts.Render("~/Content/plugins/raphael/raphael.min.js")
     @Scripts.Render("~/Content/plugins/morrisjs/morris.js")
-
-    <!-- ChartJs -->
     @Scripts.Render("~/Content/plugins/chartjs/Chart.bundle.js")
-
-    <!-- Flot Charts Plugin Js -->
     @Scripts.Render("~/Content/plugins/flot-charts/jquery.flot.js")
     @Scripts.Render("~/Content/plugins/flot-charts/jquery.flot.resize.js")
     @Scripts.Render("~/Content/plugins/flot-charts/jquery.flot.pie.js")
     @Scripts.Render("~/Content/plugins/flot-charts/jquery.flot.categories.js")
     @Scripts.Render("~/Content/plugins/flot-charts/jquery.flot.time.js")
-
-    <!-- Sparkline Chart Plugin Js -->
     @Scripts.Render("~/Content/plugins/jquery-sparkline/jquery.sparkline.js")
-
-    <!-- Custom Js -->
     @Scripts.Render("~/Content/js/admin.js")
     @Scripts.Render("~/Content/js/pages/index.js")
-
-    <!-- Demo Js -->
     @Scripts.Render("~/Content/js/demo.js")
-    @RenderSection("scripts", required: false)
+
+    <section class="content">
+        <div class="container-fluid">
+            @RenderBody()
+        </div>
+    </section>
+
 </body>
 
 </html>

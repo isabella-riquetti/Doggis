@@ -39,7 +39,7 @@ class Morris.Donut extends Morris.EventEmitter
       @el = $ options.element
 
     if @el == null || @el.length == 0
-      throw new Error("Graph placeholder not found.")
+       return;
 
     # bail if there's no data
     if options.data is undefined or options.data.length is 0

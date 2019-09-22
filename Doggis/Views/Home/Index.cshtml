@@ -1,48 +1,48 @@
-﻿<!-- Widgets -->
+﻿@model Doggis.ViewModel.HomeViewModel
+
 <div class="row clearfix">
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-pink hover-expand-effect">
             <div class="icon">
-                <i class="material-icons">playlist_add_check</i>
+                <i class="material-icons">@Model.Card1Icon</i>
             </div>
             <div class="content">
-                <div class="text">Agendamentos</div>
-                <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
+                <div class="text">@Model.Card1Title</div>
+                <div class="number count-to" data-from="0" data-to="@Model.Card1Value" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-cyan hover-expand-effect">
             <div class="icon">
-                <i class="material-icons">help</i>
+                <i class="material-icons">@Model.Card2Icon</i>
             </div>
             <div class="content">
-                <div class="text">Serviços</div>
-                <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="text">@Model.Card2Title</div>
+                <div class="number count-to" data-from="0" data-to="@Model.Card2Value" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-light-green hover-expand-effect">
             <div class="icon">
-                <i class="material-icons">forum</i>
+                <i class="material-icons">@Model.Card3Icon</i>
             </div>
             <div class="content">
-                <div class="text">Produtos</div>
-                <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="text">@Model.Card3Title</div>
+                <div class="number count-to" data-from="0" data-to="@Model.Card3Value" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
         <div class="info-box bg-orange hover-expand-effect">
             <div class="icon">
-                <i class="material-icons">person_add</i>
+                <i class="material-icons">@Model.Card4Icon</i>
             </div>
             <div class="content">
-                <div class="text">Clientes</div>
-                <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                <div class="text">@Model.Card4Title</div>
+                <div class="number count-to" data-from="0" data-to="@Model.Card4Value" data-speed="1000" data-fresh-interval="20"></div>
             </div>
         </div>
     </div>
 </div>
-<!-- #END# Widgets -->

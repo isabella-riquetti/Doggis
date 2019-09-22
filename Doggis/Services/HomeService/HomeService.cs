@@ -18,7 +18,8 @@ namespace Doggis.Services
 
         public int GetPendingServiceScheduleCount()
         {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > DateTime.Now.Brasilia()).Count();
+            var today = DateTime.Now.Brasilia();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today).Count();
         }
 
         public int GetClientCount()
@@ -38,12 +39,14 @@ namespace Doggis.Services
 
         public int GetClientPendingAvaliationCount(Guid clientID)
         {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule < DateTime.Now.Brasilia() && s.ClientID == clientID && s.Avaliations.Count() == 0).Count();
+            var today = DateTime.Now.Brasilia();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule < today && s.ClientID == clientID && s.Avaliations.Count() == 0).Count();
         }
 
         public int GetClientPendingServiceScheduleCount(Guid clientID)
         {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > DateTime.Now.Brasilia() && s.ClientID == clientID).Count();
+            var today = DateTime.Now.Brasilia();
+            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > today && s.ClientID == clientID).Count();
         }
 
         public int GetClientPetCount(Guid clientID)

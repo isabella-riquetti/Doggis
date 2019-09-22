@@ -12,7 +12,8 @@ namespace Doggis.Data.Enum
         {
             Cleaning = 0,
             Food = 1,
-            Health = 2
+            Health = 2,
+            Accessories = 3
         }
     }
 }

@@ -7,44 +7,20 @@ namespace Doggis.Services
 {
     public interface IHomeService
     {
-        public int GetPendingServiceScheduleCount()
-        {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > DateTime.Now.Brasilia()).Count();
-        }
+        int GetPendingServiceScheduleCount();
 
-        public int GetClientCount()
-        {
-            return _unitOfWork.Client.Get().Count();
-        }
+        int GetClientCount();
 
-        public int GetPetCount()
-        {
-            return _unitOfWork.Pet.Get().Count();
-        }
+        int GetPetCount();
 
-        public int GetOrderCount()
-        {
-            return _unitOfWork.Order.Get().Count();
-        }
+        int GetOrderCount();
 
-        public int GetClientPendingAvaliationCount(Guid clientID)
-        {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule < DateTime.Now.Brasilia() && s.ClientID == clientID && s.Avaliations.Count() == 0).Count();
-        }
+        int GetClientPendingAvaliationCount(Guid clientID);
 
-        public int GetClientPendingServiceScheduleCount(Guid clientID)
-        {
-            return _unitOfWork.ServiceSchedule.Get(s => s.Schedule > DateTime.Now.Brasilia() && s.ClientID == clientID).Count();
-        }
+        int GetClientPendingServiceScheduleCount(Guid clientID);
 
-        public int GetClientPetCount(Guid clientID)
-        {
-            return _unitOfWork.Pet.Get(p => p.OwnerId == clientID).Count();
-        }
+        int GetClientPetCount(Guid clientID);
 
-        public int GetClientPataz(Guid clientID)
-        {
-            return _unitOfWork.Client.FirstOrDefault(p => p.ID == clientID).Pataz;
-        }
+        int GetClientPataz(Guid clientID);
     }
 }

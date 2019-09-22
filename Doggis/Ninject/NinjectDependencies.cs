@@ -15,6 +15,7 @@ namespace Doggis.Ninject
             kernel.Bind<IServiceService>().To<ServiceService>();
             kernel.Bind<ILoginService>().To<LoginService>();
             kernel.Bind<IHomeService>().To<HomeService>();
+            kernel.Bind<IVeterinaryService>().To<VeterinaryService>();
 
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }

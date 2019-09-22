@@ -2,7 +2,7 @@ var data = [], totalPoints = 110;
 var updateInterval = 320;
 var realtime = 'on';
 
-$(function () {
+$(document).ready(function () {
     //Real time ==========================================================================================
     var plot = $.plot('#real_time_chart', [getRandomData()], {
         series: {
