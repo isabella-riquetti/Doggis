@@ -77,12 +77,12 @@
                     <img src="~/Content/images/user.jpg" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Isabella Riquetti</div>
-                    <div class="email">riquetti.isabella@gmail.com</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Doggis.Models.Helpers.GetLoggedUserName()</div>
+                    <div class="email">@Doggis.Models.Helpers.GetUserExtraData()</div>
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sair</a></li>
+                            <li><a href="@Url.Action("LogOff", "Authentication")"><i class="material-icons">input</i>Sair</a></li>
                         </ul>
                     </div>
                 </div>
@@ -98,7 +98,7 @@
                                 <span>Ínicio</span>
                             </a>
                         </li>
-                        if ((bool)HttpContext.Current.Session["IsAdmin"])
+                        if (Doggis.Models.Helpers.CurrentUserHasPermission("IsAdmin"))
                         {
                             <li class="header">Administrador</li>
                             <li>
@@ -149,7 +149,7 @@
                                 </ul>
                             </li>
                         }
-                        if ((bool)HttpContext.Current.Session["IsAdmin"] || (bool)HttpContext.Current.Session["IsAttendant"])
+                        if (Doggis.Models.Helpers.CurrentUserHasPermission("IsAdmin") || Doggis.Models.Helpers.CurrentUserHasPermission("IsAttendant"))
                         {
                             <li class="header">Atendentes</li>
                             <li>
@@ -159,7 +159,7 @@
                                 </a>
                             </li>
                         }
-                        if ((bool)HttpContext.Current.Session["IsAttendant"])
+                        if (Doggis.Models.Helpers.CurrentUserHasPermission("IsAttendant"))
                         {
                             <li>
                                 <a href="index.html">
@@ -191,7 +191,7 @@
                                 </ul>
                             </li>
                         }
-                        if ((bool)HttpContext.Current.Session["IsClient"])
+                        if (Doggis.Models.Helpers.CurrentUserHasPermission("IsClient"))
                         {
                             <li class="header">Cliente</li>
                             <li>

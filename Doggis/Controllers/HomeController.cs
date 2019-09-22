@@ -1,5 +1,6 @@
-﻿using Doggis.Services;
-using Doggis.Services.ServiceService;
+﻿using Doggis.Models;
+using Doggis.Services;
+using Doggis.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Doggis.Controllers
 {
+    [Authorize(Roles = "IsLogged")]
     public class HomeController : Controller
     {
         private readonly IServiceService _serviceService;
@@ -19,9 +21,14 @@ namespace Doggis.Controllers
 
         public ActionResult Index()
         {
-            SessionContext.IsAdmin = true;
-            SessionContext.IsAttendant = false;
-            SessionContext.IsClient = true;
+            if(Helpers.CurrentUserHasPermission("IsClient"))
+            {
+
+            }
+            else
+            {
+
+            }
             return View();
         }
 

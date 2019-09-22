@@ -1,0 +1,86 @@
+﻿@model  Doggis.Models.LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Sign In | Bootstrap Based Admin Template - Material Design</title>
+    <!-- Favicon-->
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    @Styles.Render("~/Content/plugins/bootstrap/css/bootstrap.css")
+
+    <!-- Waves Effect Css -->
+    @Styles.Render("~/Content/plugins/node-waves/waves.css")
+
+    <!-- Animation Css -->
+    @Styles.Render("~/Content/plugins/animate-css/animate.css")
+
+    <!-- Custom Css -->
+    @Styles.Render("~/Content/css/style.css")
+</head>
+
+<body class="login-page">
+    <div class="login-box">
+        <div class="logo">
+            <a href="javascript:void(0);">DOGGIS</a>
+        </div>
+        <div class="card">
+            <div class="body">
+                @Html.ValidationSummary(true)
+                @using (Html.BeginForm())
+                {
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Usuário" required autofocus>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">lock</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" id="Password" name="Password" placeholder="Senha" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <input class="btn btn-block bg-pink waves-effect" type="submit" name="Entrar" value="Entrar" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery Core Js -->
+    @Scripts.Render("~/Content/plugins/jquery/jquery.min.js")
+
+    <!-- Bootstrap Core Js -->
+    @Scripts.Render("~/Content/plugins/bootstrap/js/bootstrap.js")
+
+    <!-- Waves Effect Plugin Js -->
+    @Scripts.Render("~/Content/plugins/node-waves/waves.js")
+
+    <!-- Validation Plugin Js -->
+    @Scripts.Render("~/Content/plugins/jquery-validation/jquery.validate.js")
+
+    <!-- Custom Js -->
+    @Scripts.Render("~/Content/js/admin.js")
+    @Scripts.Render("~/Content/js/pages/examples/sign-in.js")
+</body>
+
+</html>

@@ -2,7 +2,7 @@
 using Doggis.Data.UnitOfWork;
 using System.Collections.Generic;
 
-namespace Doggis.Services.ServiceService
+namespace Doggis.Services
 {
     public class ServiceService : IServiceService
     {

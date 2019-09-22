@@ -1,5 +1,5 @@
 ﻿using Doggis.Data.UnitOfWork;
-using Doggis.Services.ServiceService;
+using Doggis.Services;
 using Ninject;
 using System.Web.Mvc;
 
@@ -13,6 +13,8 @@ namespace Doggis.Ninject
 
             kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
             kernel.Bind<IServiceService>().To<ServiceService>();
+            kernel.Bind<ILoginService>().To<LoginService>();
+            kernel.Bind<IHomeService>().To<HomeService>();
 
             DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }

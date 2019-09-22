@@ -1,4 +1,4 @@
-﻿using Doggis.Data.Models;
+﻿using Doggis.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Doggis.Services
 {
-    public interface IServiceService
+    public interface ILoginService
     {
-        IEnumerable<Service> Get();
+        SystemUser GetUser(string userName, string password);
     }
 }
