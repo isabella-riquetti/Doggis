@@ -12,35 +12,43 @@ namespace Doggis.ViewModel
         [HiddenInput]
         public Guid ID { get; set; }
 
-        [Required]
         [Display(Name = "Nome")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Name { get; set; }
 
-        [Required]
         [Display(Name = "RG")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Identification { get; set; }
 
-        [Required]
         [Display(Name = "CPF")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string NationalInsuranceNumber { get; set; }
 
-        [Required]
         [Display(Name = "Nº Conselho Vet")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string CouncilNumber { get; set; }
 
-        [Required]
         [Display(Name = "Horário de Entrada")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public TimeSpan EntryTime { get; set; }
 
-        [Required]
         [Display(Name = "Horário de Saída")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public TimeSpan DepartureTime { get; set; }
 
-        [Required]
         [Display(Name = "Status")]
+        [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public bool Status { get; set; }
 
-        [Required]
-        public Dictionary<int, string> AllowedSpecies { get; set; }
+        [Display(Name = "Espécies tratadas")]
+        [Required(ErrorMessage = "É necessário selecionar ao menos uma espécie.")]
+        public List<int> AllowedSpecies { get; set; }
+    }
+
+    public class Species
+    {
+        public int Value { get; set; }
+        public string Text { get; set; }
+        public bool Selected { get; set; }
     }
 }

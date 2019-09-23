@@ -22,13 +22,14 @@
                     <thead>
                         <tr class="align-center">
                             <th>Nome</th>
-                            <th>RG</th>
-                            <th>CPF</th>
-                            <th>Nº Conselho</th>
-                            <th>Horário de Entrada</th>
-                            <th>Horário de Saída</th>
-                            <th>Status</th>
-                            <th style="text-align: center">Ações</th>
+                            <th class="text-center">RG</th>
+                            <th class="text-center">CPF</th>
+                            <th class="text-center">Nº Conselho</th>
+                            <th class="text-center">Horário de Entrada</th>
+                            <th class="text-center">Horário de Saída</th>
+                            <th class="text-center">Qtd. Espécies Tratadas</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,12 +38,13 @@
                             {
                                 <tr id="@vet.ID">
                                     <td>@vet.Name</td>
-                                    <td>@vet.Identification</td>
-                                    <td>@vet.NationalInsuranceNumber</td>
-                                    <td>@vet.CouncilNumber</td>
-                                    <td>@vet.EntryTime</td>
-                                    <td>@vet.DepartureTime</td>
-                                    <td>@vet.Status</td>
+                                    <td class="align-center">@vet.Identification</td>
+                                    <td class="align-center">@vet.NationalInsuranceNumber</td>
+                                    <td class="align-center">@vet.CouncilNumber</td>
+                                    <td class="align-center">@vet.EntryTime</td>
+                                    <td class="align-center">@vet.DepartureTime</td>
+                                    <td class="align-center">@vet.AllowedSpeciesCount</td>
+                                    <td class="align-center">@vet.Status</td>
                                     <td class="align-center" >
                                         <button type="button" class="btn btn-default btn-xs waves-effect" onclick="location.href='@Url.Action("Edit", "Veterinary")?id=@vet.ID'">
                                             <i class="md-14 material-icons col-indigo">edit</i>

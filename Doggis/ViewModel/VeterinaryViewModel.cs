@@ -15,5 +15,6 @@ namespace Doggis.ViewModel
         public TimeSpan EntryTime { get; set; }
         public TimeSpan DepartureTime { get; set; }
         public string Status { get; internal set; }
+        public int AllowedSpeciesCount { get; set; }
     }
 }

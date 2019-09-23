@@ -221,6 +221,15 @@
             @RenderBody()
         </div>
     </section>
+    <script>
+        $(document).ready(function () {
+            var alertMessage = '@(ViewBag.AlertMessage)';
+            var alertType = '@(ViewBag.AlertType)';
+            if (alertMessage != '' && alertType != '') {
+                showNotification(alertType, alertMessage, "bottom", "right", "animated bounceInDown", "animated bounceOutDown");
+            }
+        });
+    </script>
 
 </body>
 

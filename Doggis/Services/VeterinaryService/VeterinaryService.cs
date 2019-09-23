@@ -29,7 +29,8 @@ namespace Doggis.Services
                 CouncilNumber = u.CouncilNumber,
                 EntryTime = (TimeSpan)u.EntryTime,
                 DepartureTime = (TimeSpan)u.DepartureTime,
-                Status = u.Status ? "Ativo" : "Inativo"
+                Status = u.Status ? "Ativo" : "Inativo",
+                AllowedSpeciesCount = u.VeterinaryAllowedSpecies.Count()
             }).ToList();
         }
 
@@ -50,7 +51,7 @@ namespace Doggis.Services
             var vet = _unitOfWork.User.FirstOrDefault(v => v.ID == id);
             if(vet != null)
             {
-                var vetEditable = new EditVeterinaryViewModel()
+                return new EditVeterinaryViewModel()
                 {
                     ID = vet.ID,
                     Name = vet.Name,
@@ -59,20 +60,63 @@ namespace Doggis.Services
                     CouncilNumber = vet.CouncilNumber,
                     EntryTime = vet.EntryTime ?? new TimeSpan(),
                     DepartureTime = vet.DepartureTime ?? new TimeSpan(),
-                    Status = vet.Status
+                    Status = vet.Status,
+                    AllowedSpecies = vet.VeterinaryAllowedSpecies.Select(s => (int)s.Specie).ToList()
                 };
-                var vetAllowedSpecies = vet.VeterinaryAllowedSpecies.ToList();
-                vetEditable.AllowedSpecies = new Dictionary<int, string>(vetAllowedSpecies.ToDictionary(s => (int)s.Specie, s => EnumHelper.GetDescription(s.Specie)));
-
-                return vetEditable;
             }
             return null;
         }
 
-        public Dictionary<int, string> GetNotUsedSpecies(EditVeterinaryViewModel vet, SelectList species)
+        public List<Species> SetAllowedSpecies(List<int> allowedSpecies, Dictionary<int, string> species)
         {
-            var vetAllowedSpecies = vet.AllowedSpecies.Select(a => a.Value);
-            return new Dictionary<int, string>(species.Where(s => !vetAllowedSpecies.Contains(s.Value)).ToDictionary(s => Convert.ToInt32(s.Value), s => s.Text));
+            var list = new List<Species>();
+            foreach (var specie in species)
+            {
+                var newSpecies = new Species()
+                {
+                    Text = specie.Value,
+                    Value = specie.Key
+                };
+                if (allowedSpecies != null && allowedSpecies.Contains(specie.Key))
+                    newSpecies.Selected = true;
+                list.Add(newSpecies);
+            }
+
+            return list;
+        }
+
+        public bool UpdateVet(EditVeterinaryViewModel model)
+        {
+            var vet = _unitOfWork.User.FirstOrDefault(v => v.ID == model.ID);
+            if(vet != null)
+            {
+                vet.Name = model.Name;
+                vet.Status = model.Status;
+                vet.Identification = model.Identification;
+                vet.NationalInsuranceNumber = model.NationalInsuranceNumber;
+                vet.CouncilNumber = model.CouncilNumber;
+                vet.EntryTime = model.EntryTime;
+                vet.DepartureTime = model.DepartureTime;
+
+                var currentAllowedSpecies = vet.VeterinaryAllowedSpecies.ToList();
+                var currentAllowedSpeciesValue = currentAllowedSpecies.Select(v => (int)v.Specie);
+
+                foreach (var newAllowedSpecie in model.AllowedSpecies.Where(a => !currentAllowedSpeciesValue.Contains(a)))
+                    _unitOfWork.VeterinaryAllowedSpecies.Add(new Data.Models.VeterinaryAllowedSpecie()
+                    {
+                        ID = Guid.NewGuid(),
+                        Specie = (Enums.Pet.Specie)newAllowedSpecie,
+                        VeterinaryID = vet.ID
+                    });
+
+                foreach (var oldAllowedSpecie in currentAllowedSpecies.Where(a => !model.AllowedSpecies.Contains((int)a.Specie)))
+                    _unitOfWork.VeterinaryAllowedSpecies.Delete(oldAllowedSpecie);
+
+                _unitOfWork.Commit();
+                return true;
+            }
+
+            return false;
         }
     }
 }

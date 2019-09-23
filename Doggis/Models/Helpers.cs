@@ -77,7 +77,7 @@ namespace Doggis.Models
             return dateTimeNowBrasilia;
         }
 
-        public static SelectList EnumSelectlist<TEnum>(bool indexed = false) where TEnum : struct
+        public static SelectList EnumSelectList<TEnum>(bool indexed = false) where TEnum : struct
         {
             return new SelectList(System.Enum.GetValues(typeof(TEnum)).Cast<TEnum>().Select(item => new SelectListItem
             {
@@ -86,6 +86,12 @@ namespace Doggis.Models
             })
             .OrderBy(f => f.Text)
             .ToList(), "Value", "Text");
+        }
+
+        public static Dictionary<int, string> EnumDictionary<TEnum>() where TEnum : struct
+        {
+            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>()
+                .ToDictionary(e => Convert.ToInt32(e), e => EnumHelper.GetDescription(e as System.Enum));
         }
     }
 }

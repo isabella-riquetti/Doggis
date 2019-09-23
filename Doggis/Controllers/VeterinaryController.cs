@@ -19,18 +19,29 @@ namespace Doggis.Controllers
         }
 
         // GET: Veterinary
-        public ActionResult Index()
+        public ActionResult Index(string alertMessage, string alertType)
         {
+            if(!String.IsNullOrEmpty(alertMessage) && !String.IsNullOrEmpty(alertType))
+            {
+                ViewBag.AlertMessage = alertMessage;
+                ViewBag.AlertType = alertType;
+            }
             var veterinaries = _veterinaryService.GetVeterinaries();
             return View(veterinaries);
         }
 
-        public ActionResult Edit(Guid id)
+        public ActionResult Edit(Guid? id)
         {
-            var vet = _veterinaryService.GetVeterinary(id);
+            if (id == null)
+            {
+                return RedirectToAction("Index", new { alertMessage = "Selecione um veterinário para editar", alertType = "alert-danger"});
+            }
 
-            var species = Helpers.EnumSelectlist<Enums.Pet.Specie>(true);
-            ViewBag.NotUsedSpecies = _veterinaryService.GetNotUsedSpecies(vet, species);
+            var vet = _veterinaryService.GetVeterinary((Guid)id);
+
+            var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+            var speciesWithSelected = _veterinaryService.SetAllowedSpecies(vet.AllowedSpecies, allSpecies);
+            ViewBag.Species = speciesWithSelected;
 
             return View(vet);
         }
@@ -38,13 +49,20 @@ namespace Doggis.Controllers
         [HttpPost]
         public ActionResult Edit(EditVeterinaryViewModel model)
         {
-            var species = Helpers.EnumSelectlist<Enums.Pet.Specie>(true);
-            ViewBag.NotUsedSpecies = _veterinaryService.GetNotUsedSpecies(model, species);
-
             if (!ModelState.IsValid)
-                return View(model);
+            {
+                var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+                var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
+                ViewBag.Species = speciesWithSelected;
 
-            return Index();
+                return View(model);
+            }
+
+            var result = _veterinaryService.UpdateVet(model);
+            if(result)
+                return RedirectToAction("Index", new { alertMessage = "Veterinário editado com sucesso!", alertType = "alert-sucess" });
+            else
+                return RedirectToAction("Index", new { alertMessage = "Não foi possível editar o veterinário.", alertType = "alert-danger" });
         }
     }
 }

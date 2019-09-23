@@ -1,4 +1,8 @@
 ﻿
+$(document).ready(function () {
+    $('.field-validation-error').parent().find('.form-line').addClass('error');
+    $('.field-validation-error').parent().find('.ms-list').addClass('error');
+});
 
 function showNotification(colorName, text, placementFrom, placementAlign, animateEnter, animateExit) {
     if (colorName === null || colorName === '')
