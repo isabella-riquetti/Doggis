@@ -1,4 +1,4 @@
-﻿using Doggis.Data.Enum;
+﻿using Enums;
 using System;
 using System.Collections.Generic;
 
@@ -9,7 +9,7 @@ namespace Doggis.Data.Models
         public Guid ID { get; set; }
         public string ProtocolNumber { get; set; }
         public bool? Paid { get; set; }
-        public Enum.Order.PaymentType? PaymentType { get; set; }
+        public Enums.Order.PaymentType? PaymentType { get; set; }
         public decimal? TotalPrice { get; set; }
         public bool Status { get; set; }
 

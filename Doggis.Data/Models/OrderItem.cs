@@ -10,7 +10,7 @@ namespace Doggis.Data.Models
     {
         public Guid ID { get; set; }
         public Guid OrderID { get; set; }
-        public Enum.OrderItem.OrderItemType Type { get; set; }
+        public Enums.OrderItem.OrderItemType Type { get; set; }
         public Guid ServiceScheduleID { get; set; }
         public Guid ProductID { get; set; }
         public decimal OriginalPrice { get; set; }

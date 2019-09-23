@@ -1,19 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doggis.Data.Enum
+namespace Enums
 {
     public class Pet
     {
         public enum Specie
         {
+            [Description("Cachorro")]
             Dog = 0,
+            [Description("Gato")]
             Cat = 1,
+            [Description("Pássaro")]
             Bird = 2,
+            [Description("Coelho")]
             Bunny = 3,
+            [Description("Cobra")]
             Snake = 4
         }
 

@@ -291,13 +291,6 @@ $.AdminBSB.input = {
         $parentSelector.on('click', '.form-float .form-line .form-label', function () {
             $(this).parent().find('input').focus();
         });
-
-        //Not blank form
-        $parentSelector.find('.form-control').each(function () {
-            if ($(this).val() !== '') {
-                $(this).parents('.form-line').addClass('focused');
-            }
-        });
     }
 }
 //==========================================================================================================================

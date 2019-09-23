@@ -20,14 +20,15 @@
             <div class="body table-responsive">
                 <table class="table table-striped">
                     <thead>
-                        <tr>
+                        <tr class="align-center">
                             <th>Nome</th>
                             <th>RG</th>
                             <th>CPF</th>
                             <th>Nº Conselho</th>
                             <th>Horário de Entrada</th>
                             <th>Horário de Saída</th>
-                            <th>Ações</th>
+                            <th>Status</th>
+                            <th style="text-align: center">Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,12 +42,10 @@
                                     <td>@vet.CouncilNumber</td>
                                     <td>@vet.EntryTime</td>
                                     <td>@vet.DepartureTime</td>
-                                    <td>
+                                    <td>@vet.Status</td>
+                                    <td class="align-center" >
                                         <button type="button" class="btn btn-default btn-xs waves-effect" onclick="location.href='@Url.Action("Edit", "Veterinary")?id=@vet.ID'">
                                             <i class="md-14 material-icons col-indigo">edit</i>
-                                        </button>
-                                        <button type="button" class="btn btn-default btn-xs waves-effect" onclick="disableVet('@vet.ID')">
-                                            <i class="md-14 material-icons col-red">clear</i>
                                         </button>
                                     </td>
                                 </tr>
@@ -58,12 +57,6 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    function disableVet(id) {}
-
-</script>
 
 
 @Scripts.Render("~/Content/plugins/jquery-datatable/jquery.dataTables.js")

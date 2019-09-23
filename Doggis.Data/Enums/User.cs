@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doggis.Data.Enum
+namespace Enums
 {
     public class User
     {

@@ -10,7 +10,7 @@ namespace Doggis.Data.Models
     {
         public Guid ID { get; set; }
         public string Name { get; set; }
-        public Enum.User.UserType Type { get; set; }
+        public Enums.User.UserType Type { get; set; }
         public string Identification { get; set; }
         public string NationalInsuranceNumber { get; set; }
         public string CouncilNumber { get; set; }

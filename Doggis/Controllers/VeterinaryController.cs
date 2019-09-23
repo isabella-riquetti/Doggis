@@ -1,4 +1,6 @@
-﻿using Doggis.Services;
+﻿using Doggis.Models;
+using Doggis.Services;
+using Doggis.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,12 +25,26 @@ namespace Doggis.Controllers
             return View(veterinaries);
         }
 
-        [HttpGet]
-        public JsonResult UpdateStatus(Guid id, bool status)
+        public ActionResult Edit(Guid id)
         {
-            var result = _veterinaryService.DisableVet(id, status);
+            var vet = _veterinaryService.GetVeterinary(id);
 
-            return Json(result, JsonRequestBehavior.AllowGet);
+            var species = Helpers.EnumSelectlist<Enums.Pet.Specie>(true);
+            ViewBag.NotUsedSpecies = _veterinaryService.GetNotUsedSpecies(vet, species);
+
+            return View(vet);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(EditVeterinaryViewModel model)
+        {
+            var species = Helpers.EnumSelectlist<Enums.Pet.Specie>(true);
+            ViewBag.NotUsedSpecies = _veterinaryService.GetNotUsedSpecies(model, species);
+
+            if (!ModelState.IsValid)
+                return View(model);
+
+            return Index();
         }
     }
 }

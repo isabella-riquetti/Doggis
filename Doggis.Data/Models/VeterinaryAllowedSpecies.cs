@@ -10,7 +10,7 @@ namespace Doggis.Data.Models
     {
         public Guid ID { get; set; }
         public Guid VeterinaryID { get; set; }
-        public Enum.Pet.Specie Specie { get; set; }
+        public Enums.Pet.Specie Specie { get; set; }
 
         public virtual User Veterinary { get; set; }
     }

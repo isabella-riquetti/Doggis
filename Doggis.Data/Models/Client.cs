@@ -1,4 +1,4 @@
-using Doggis.Data.Enum;
+using Enums;
 using System;
 using System.Collections.Generic;
 

@@ -124,12 +124,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enum\Helper\EnumHelper.cs" />
-    <Compile Include="Enum\Order.cs" />
-    <Compile Include="Enum\OrderItem.cs" />
-    <Compile Include="Enum\Pet.cs" />
-    <Compile Include="Enum\Product.cs" />
-    <Compile Include="Enum\User.cs" />
+    <Compile Include="Enums\Helper\EnumHelper.cs" />
+    <Compile Include="Enums\Order.cs" />
+    <Compile Include="Enums\OrderItem.cs" />
+    <Compile Include="Enums\Pet.cs" />
+    <Compile Include="Enums\Product.cs" />
+    <Compile Include="Enums\User.cs" />
     <Compile Include="Models\Mapping\OrderItemMap.cs" />
     <Compile Include="Models\Mapping\ClientMap.cs" />
     <Compile Include="Models\Client.cs" />

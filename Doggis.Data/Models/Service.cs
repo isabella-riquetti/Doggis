@@ -12,7 +12,7 @@ namespace Doggis.Data.Models
         public string Name { get; set; }
         public TimeSpan EstimatedTime { get; set; }
         public decimal Price { get; set; }
-        public Enum.User.UserType Responsable { get; set; }
+        public Enums.User.UserType Responsable { get; set; }
         public int PatazGiven { get; set; }
         public int PatazPrice { get; set; }
         public bool Status { get; set; }

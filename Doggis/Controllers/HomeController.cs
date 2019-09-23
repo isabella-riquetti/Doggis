@@ -13,12 +13,10 @@ namespace Doggis.Controllers
     [Authorize(Roles = "IsLogged")]
     public class HomeController : Controller
     {
-        private readonly IServiceService _serviceService;
         private readonly IHomeService _homeService;
 
-        public HomeController(IServiceService serviceService, IHomeService homeService)
+        public HomeController(IHomeService homeService)
         {
-            _serviceService = serviceService;
             _homeService = homeService;
         }
 

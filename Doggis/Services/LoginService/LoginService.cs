@@ -22,7 +22,7 @@ namespace Doggis.Services
         {
             if (userName == "administrador")
             {
-                var admin = _unitOfWork.User.FirstOrDefault(u => u.Type == Data.Enum.User.UserType.Admin && u.Status);
+                var admin = _unitOfWork.User.FirstOrDefault(u => u.Type == Enums.User.UserType.Admin && u.Status);
                 return new SystemUser()
                 {
                     ID = admin.ID,
@@ -33,7 +33,7 @@ namespace Doggis.Services
             }
             else if (userName == "atendente")
             {
-                var attendant = _unitOfWork.User.FirstOrDefault(u => u.Type == Data.Enum.User.UserType.Attendant && u.Status);
+                var attendant = _unitOfWork.User.FirstOrDefault(u => u.Type == Enums.User.UserType.Attendant && u.Status);
                 return new SystemUser()
                 {
                     ID = attendant.ID,

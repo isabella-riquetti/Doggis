@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Enums.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace Doggis.Models
 {
@@ -73,6 +75,17 @@ namespace Doggis.Models
             var dateTimeNowBrasilia = TimeZoneInfo.ConvertTimeFromUtc(utc, brasiliaTimeZone);
 
             return dateTimeNowBrasilia;
+        }
+
+        public static SelectList EnumSelectlist<TEnum>(bool indexed = false) where TEnum : struct
+        {
+            return new SelectList(System.Enum.GetValues(typeof(TEnum)).Cast<TEnum>().Select(item => new SelectListItem
+            {
+                Text = EnumHelper.GetDescription(item as System.Enum),
+                Value = indexed ? Convert.ToInt32(item).ToString() : item.ToString()
+            })
+            .OrderBy(f => f.Text)
+            .ToList(), "Value", "Text");
         }
     }
 }

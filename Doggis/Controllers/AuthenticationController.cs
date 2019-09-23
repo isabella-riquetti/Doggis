@@ -49,7 +49,7 @@ namespace Doggis.Controllers
             }
             else
             {
-                if(user.User.Type == Data.Enum.User.UserType.Admin)
+                if(user.User.Type == Enums.User.UserType.Admin)
                 {
                     roleClaims.Add(new Claim(ClaimTypes.Role, "IsAdmin"));
                     roleClaims.Add(new Claim(ClaimTypes.UserData, "Administrador"));
