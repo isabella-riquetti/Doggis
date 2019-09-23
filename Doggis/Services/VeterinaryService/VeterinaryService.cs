@@ -18,7 +18,7 @@ namespace Doggis.Services
 
         public List<VeterinaryViewModel> GetVeterinaries()
         {
-            return _unitOfWork.User.Get(u => u.Type == Data.Enum.User.UserType.Vet && u.Status).Select(u => new VeterinaryViewModel()
+            return _unitOfWork.User.Get(u => u.Type == Data.Enum.User.UserType.Vet).OrderByDescending(u => u.Status).Select(u => new VeterinaryViewModel()
             {
                 ID = u.ID,
                 Name = u.Name,
@@ -26,8 +26,21 @@ namespace Doggis.Services
                 NationalInsuranceNumber = u.NationalInsuranceNumber,
                 CouncilNumber = u.CouncilNumber,
                 EntryTime = (TimeSpan)u.EntryTime,
-                DepartureTime = (TimeSpan)u.DepartureTime
+                DepartureTime = (TimeSpan)u.DepartureTime,
+                Status = u.Status ? "Ativo" : "Inativo"
             }).ToList();
+        }
+
+        public bool DisableVet(Guid id, bool status)
+        {
+            var vet = _unitOfWork.User.FirstOrDefault(u => u.ID == id);
+            if (vet == null)
+                return false;
+
+            vet.Status = status;
+            _unitOfWork.Commit();
+
+            return true;
         }
     }
 }

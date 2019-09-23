@@ -9,5 +9,6 @@ namespace Doggis.Services
     public interface IVeterinaryService
     {
         List<VeterinaryViewModel> GetVeterinaries();
+        bool DisableVet(Guid id, bool status);
     }
 }

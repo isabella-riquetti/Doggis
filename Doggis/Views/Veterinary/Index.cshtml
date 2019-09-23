@@ -41,7 +41,14 @@
                                     <td>@vet.CouncilNumber</td>
                                     <td>@vet.EntryTime</td>
                                     <td>@vet.DepartureTime</td>
-                                    <td><a href="@Url.Action("Edit", "Veterinary")">Editar</a></td>
+                                    <td>
+                                        <button type="button" class="btn btn-default btn-xs waves-effect" onclick="location.href='@Url.Action("Edit", "Veterinary")?id=@vet.ID'">
+                                            <i class="md-14 material-icons col-indigo">edit</i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-xs waves-effect" onclick="disableVet('@vet.ID')">
+                                            <i class="md-14 material-icons col-red">clear</i>
+                                        </button>
+                                    </td>
                                 </tr>
                             }
                         }
@@ -51,6 +58,13 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function disableVet(id) {}
+
+</script>
+
 
 @Scripts.Render("~/Content/plugins/jquery-datatable/jquery.dataTables.js")
 @Scripts.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")

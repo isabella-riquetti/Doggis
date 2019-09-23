@@ -10,7 +10,6 @@ namespace Doggis.Controllers
     public class VeterinaryController : Controller
     {
         private readonly IVeterinaryService _veterinaryService;
-        private readonly IHomeService _homeService;
 
         public VeterinaryController(IVeterinaryService veterinaryService)
         {
@@ -22,6 +21,14 @@ namespace Doggis.Controllers
         {
             var veterinaries = _veterinaryService.GetVeterinaries();
             return View(veterinaries);
+        }
+
+        [HttpGet]
+        public JsonResult UpdateStatus(Guid id, bool status)
+        {
+            var result = _veterinaryService.DisableVet(id, status);
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
     }
 }

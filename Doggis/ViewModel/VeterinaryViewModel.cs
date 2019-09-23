@@ -14,5 +14,6 @@ namespace Doggis.ViewModel
         public string CouncilNumber { get; set; }
         public TimeSpan EntryTime { get; set; }
         public TimeSpan DepartureTime { get; set; }
+        public string Status { get; internal set; }
     }
 }

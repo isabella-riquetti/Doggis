@@ -710,6 +710,9 @@
   background-color: rgba(0, 0, 0, 0.08); }
 
 /* Material Icons ============================== */
+.material-icons.md-14 {
+    font-size: 14px; }
+
 .material-icons.md-18 {
   font-size: 18px; }
 
@@ -2494,10 +2497,15 @@ section.content {
   outline: none; }
   .btn:not(.btn-link):not(.btn-circle):hover {
     outline: none; }
-  .btn:not(.btn-link):not(.btn-circle) i {
-    font-size: 20px;
-    position: relative;
-    top: 3px; }
+    .btn:not(.btn-link):not(.btn-circle) i {
+        position: relative;
+        top: 3px;
+    }
+    .btn:not(.btn-link):not(.btn-circle) i:not(.md-14) {
+        font-size: 20px;
+        position: relative;
+        top: 3px;
+    }
   .btn:not(.btn-link):not(.btn-circle) span {
     position: relative;
     top: -2px;
