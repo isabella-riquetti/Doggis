@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace Doggis.Controllers
 {
+    [Authorize(Roles = "IsAttendant")]
     public class PetController : Controller
     {
-
         private readonly IPetService _petService;
 
         public PetController(IPetService petService)

@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace Doggis.Controllers
 {
+    [Authorize(Roles = "IsAdmin")]
     public class VeterinaryController : Controller
     {
-
         private readonly IVeterinaryService _veterinaryService;
 
         public VeterinaryController(IVeterinaryService veterinaryService)

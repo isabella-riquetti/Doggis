@@ -147,6 +147,7 @@
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PetController.cs" />
+    <Compile Include="Controllers\ServiceScheduleController.cs" />
     <Compile Include="Controllers\VeterinaryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -162,6 +163,8 @@
     <Compile Include="Services\LoginService\LoginService.cs" />
     <Compile Include="Services\PetService\IPetService.cs" />
     <Compile Include="Services\PetService\PetService.cs" />
+    <Compile Include="Services\ServiceScheduleService\IServiceScheduleService.cs" />
+    <Compile Include="Services\ServiceScheduleService\ServiceScheduleService.cs" />
     <Compile Include="Services\ServiceService\IServiceService.cs" />
     <Compile Include="Services\ServiceService\ServiceService.cs" />
     <Compile Include="Services\VeterinaryService\IVeterinaryService.cs" />
@@ -170,6 +173,7 @@
     <Compile Include="ViewModel\PetViewModels\CreatePetViewModel.cs" />
     <Compile Include="ViewModel\PetViewModels\EditablePetViewModel.cs" />
     <Compile Include="ViewModel\PetViewModels\PetViewModel.cs" />
+    <Compile Include="ViewModel\ServiceScheduleViewModel\ServiceScheduleViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModels\EditableVeterinaryViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModels\VeterinaryViewModel.cs" />
@@ -3716,6 +3720,7 @@
     <Content Include="Views\Pet\Edit.cshtml" />
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
+    <Content Include="Views\ServiceSchedule\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

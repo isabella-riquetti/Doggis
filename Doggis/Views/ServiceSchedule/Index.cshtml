@@ -1,0 +1,65 @@
+﻿@model List<Doggis.ViewModel.ServiceScheduleViewModel>
+@{
+    ViewBag.Title = "Avaliar Atendimento";
+}
+@Styles.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css")
+
+<!-- Exportable Table -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Agendamentos
+                </h2>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="align-center">
+                            <th>Pet</th>
+                            <th>Serviço</th>
+                            <th class="text-center">Data</th>
+                            <th>Responsável</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Avaliação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var schedule in Model)
+                            {
+                                <tr id="@schedule.ID">
+                                    <td>@schedule.PetName</td>
+                                    <td>@schedule.ServiceName</td>
+                                    <td class="align-center">@schedule.ScheduleText</td>
+                                    <td>@schedule.ResponsibleName</td>
+                                    <td class="align-center">@schedule.StatusText</td>
+                                    <td class="align-center">
+                                        @{
+                                            if (schedule.Scored)
+                                            {
+                                                @schedule.Score
+                                            }
+                                            else
+                                            {
+                                                <a href="@Url.Action("Score", "ServiceSchedule")?id=@schedule.ID" class="btn btn-default btn-xs waves-effect">
+                                                    <i class="md-14 material-icons col-yellow">star</i>
+                                                </a>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/Content/plugins/jquery-datatable/jquery.dataTables.js")
+@Scripts.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
+@Scripts.Render("~/Content/js/pages/tables/jquery-datatable.js")

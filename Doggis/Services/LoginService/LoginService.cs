@@ -44,7 +44,7 @@ namespace Doggis.Services
             }
             else
             {
-                var client = _unitOfWork.Client.FirstOrDefault(c => c.Status);
+                var client = _unitOfWork.Client.FirstOrDefault(c => c.Status && c.Email == userName);
                 return new SystemUser()
                 {
                     ID = client.ID,
