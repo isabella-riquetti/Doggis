@@ -1,0 +1,70 @@
+﻿@model Doggis.ViewModel.PetViewModel
+@{
+    ViewBag.Title = "Detalhes Pet";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Detalhes
+                </h2>
+            </div>
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <b>Dono</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.OwnerName, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Nome</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Name, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Espécie</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.SpecieText, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Raça</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Breed, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        @if (Model.SizeText != "")
+                        {
+                            <b>Porte</b>
+                            <div class="form-group">
+                                @Html.DisplayFor(m => m.SizeText, new { @class = "form-control", @disabled = "disabled" })
+                            </div>
+                        }
+                        <b>Alergias</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Alergies, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Descrição</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Description, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Permite Fotos</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.AllowsPhotos, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Status</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Status, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                            <a href="@Url.Action("Index", "Pet")" class="btn btn-default waves-effect pull-left">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Voltar para Lista</span>
+                            </a>
+                            <a href="@Url.Action("Edit", "Pet")?id=@Model.ID" class="btn btn-info waves-effect pull-right">
+                                <i class="material-icons">edit</i>
+                                <span>Editar</span>
+                            </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

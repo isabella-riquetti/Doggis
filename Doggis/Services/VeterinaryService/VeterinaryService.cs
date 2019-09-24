@@ -22,7 +22,7 @@ namespace Doggis.Services
 
         public List<VeterinaryViewModel> GetVeterinaries()
         {
-            return _unitOfWork.User.Get(u => u.Type == Enums.User.UserType.Vet).OrderByDescending(u => u.Status).Select(u => new VeterinaryViewModel()
+            return _unitOfWork.User.Get(u => u.Type == Enums.User.UserType.Vet).OrderByDescending(u => u.Status).ThenBy(u => u.Name).Select(u => new VeterinaryViewModel()
             {
                 ID = u.ID,
                 Name = u.Name,

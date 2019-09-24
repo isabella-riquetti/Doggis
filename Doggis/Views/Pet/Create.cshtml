@@ -1,0 +1,167 @@
+﻿@model Doggis.ViewModel.CreatePetViewModel
+@{
+    ViewBag.Title = "Editar Pet";
+}
+
+@Styles.Render("~/Content/plugins/bootstrap-select/css/bootstrap-select.css")
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Editar
+                </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm())
+                {
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <b>Dono</b>
+                            <select class="form-control show-tick" name="OwnerId" id="OwnerId">
+                                <option value="">-- Selecione um Cliente --</option>
+                                @foreach (var client in ViewBag.Clients)
+                                {
+                                    if (client.Key == Model.OwnerID)
+                                    {
+                                        <option value="@client.Key" selected>@client.Value</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@client.Key">@client.Value</option>
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.OwnerID)
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-8">
+                            <b>Nome</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Name)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Permite Fotos</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="checkbox" name="AllowsPhotos" id="AllowsPhotos" checked="@Model.AllowsPhotos" class="filled-in chk-col-light-green" value="true" />
+                                    <label for="Status">Sim</label>
+                                </div>
+                                @Html.ValidationMessageFor(x => x.AllowsPhotos)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Status</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="checkbox" name="Status" id="Status" checked="@Model.Status" class="filled-in chk-col-light-green" value="true" />
+                                    <label for="Status">Ativo</label>
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Status)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-4">
+                            <b>Espécie</b>
+                            <select class="form-control show-tick" name="Specie" id="Specie">
+                                <option value="">-- Selecione uma espécie --</option>
+                                @foreach (var specie in ViewBag.Species)
+                                {
+                                    if (specie.Key == Model.Specie)
+                                    {
+                                        <option value="@specie.Key" selected>@specie.Value</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@specie.Key">@specie.Value</option>
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.Specie)
+                        </div>
+                        <div class="col-md-4">
+                            <b>Raça</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.Breed, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Breed)
+                            </div>
+                        </div>
+                        @{
+                            var visibily = Model.Specie == 0 ? "visible" : "hidden";
+                            <div class="col-md-4 size-form-control @visibily" id="SizeColumn">
+                                <b>Portes</b>
+                                <select class="form-control show-tick" name="Size" id="Size">
+                                    <option value="">-- Selecione um porte --</option>
+                                    @foreach (var size in ViewBag.Sizes)
+                                    {
+                                        if (size.Key == Model.Size)
+                                        {
+                                            <option value="@size.Key" selected>@size.Value</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="@size.Key">@size.Value</option>
+                                        }
+                                    }
+                                </select>
+                                @Html.ValidationMessageFor(x => x.Size)
+                            </div>
+                        }
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <b>Alergias</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextAreaFor(m => m.Alergies, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Alergies)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <b>Descrição</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Description)
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Salvar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Content/plugins/autosize/autosize.js")
+@Scripts.Render("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")
+
+<script>
+    autosize($('textarea.auto-growth'));
+    $(document).ready(function () {
+        $("#Specie").on("change", function () {
+            var specie = $("#Specie option:selected").val();
+            if (specie != "0") {
+                $("#SizeColumn").addClass("hidden");
+            }
+            else if(specie == "0") {
+                $("#SizeColumn").removeClass("hidden");
+            }
+        });
+    });
+</script>

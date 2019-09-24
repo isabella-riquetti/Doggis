@@ -51,7 +51,7 @@ namespace Doggis.Services
 
         public int GetClientPetCount(Guid clientID)
         {
-            return _unitOfWork.Pet.Get(p => p.OwnerId == clientID && p.Status).Count();
+            return _unitOfWork.Pet.Get(p => p.OwnerID == clientID && p.Status).Count();
         }
 
         public int GetClientPataz(Guid clientID)

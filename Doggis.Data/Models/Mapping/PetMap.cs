@@ -18,7 +18,7 @@ namespace Doggis.Data.Models.Mapping
             // Table & Column Mappings
             ToTable("Pet");
             Property(p => p.ID).HasColumnName("ID");
-            Property(p => p.OwnerId).HasColumnName("OwnerId").IsRequired();
+            Property(p => p.OwnerID).HasColumnName("OwnerId").IsRequired();
             Property(p => p.Specie).HasColumnName("Specie").IsRequired();
             Property(p => p.Name).HasColumnName("Name").IsRequired().HasMaxLength(255);
             Property(p => p.Breed).HasColumnName("Breed").IsRequired().HasMaxLength(255);
@@ -30,7 +30,7 @@ namespace Doggis.Data.Models.Mapping
 
             HasRequired(t => t.Owner)
                 .WithMany(t => t.Pets)
-                .HasForeignKey(d => d.OwnerId)
+                .HasForeignKey(d => d.OwnerID)
                 .WillCascadeOnDelete(false);
         }
     }

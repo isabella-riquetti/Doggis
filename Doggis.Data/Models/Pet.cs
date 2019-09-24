@@ -9,7 +9,7 @@ namespace Doggis.Data.Models
     public class Pet
     {
         public Guid ID { get; set; }
-        public Guid OwnerId { get; set; }
+        public Guid OwnerID { get; set; }
         public Enums.Pet.Specie Specie { get; set; }
         public string Name { get; set; }
         public string Breed { get; set; }

@@ -8238,3 +8238,7 @@ html.ie11 .bs-searchbox .form-control {
 .text-center {
     text-align: center;
 }
+
+.btn-group.bootstrap-select.form-control.show-tick.error{
+    border-bottom: solid red 1px !important;
+}

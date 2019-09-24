@@ -25,9 +25,14 @@ namespace Enums
 
         public enum Size
         {
-            Small = 0,
-            Medium = 1,
-            Large = 2
+            [Description("Padrão")]
+            Default = 0,
+            [Description("Pequeno")]
+            Small = 1,
+            [Description("Médio")]
+            Medium = 2,
+            [Description("Grande")]
+            Large = 3
         }
     }
 }

@@ -1,0 +1,67 @@
+﻿@model List<Doggis.ViewModel.PetViewModel>
+@{
+    ViewBag.Title = "Visualizar Pets";
+}
+@Styles.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css")
+
+<!-- Exportable Table -->
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Pet
+                </h2>
+            </div>
+            <div class="body">
+                <a href="@Url.Action("Create", "Pet")" class="btn btn-primary waves-effect">
+                    <i class="material-icons">add</i>
+                    <span>Novo</span>
+                </a>
+            </div>
+            <div class="body table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr class="align-center">
+                            <th>Dono</th>
+                            <th>Nome</th>
+                            <th class="text-center">Espécie</th>
+                            <th class="text-center">Raça</th>
+                            <th class="text-center">Permite Fotos</th>
+                            <th class="text-center">Status</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var pet in Model)
+                            {
+                                <tr id="@pet.ID">
+                                    <td>@pet.OwnerName</td>
+                                    <td>@pet.Name</td>
+                                    <td class="align-center">@pet.SpecieText</td>
+                                    <td class="align-center">@pet.Breed</td>
+                                    <td class="align-center">@pet.AllowsPhotos</td>
+                                    <td class="align-center">@pet.Status</td>
+                                    <td class="align-center">
+                                        <a href="@Url.Action("Details", "Pet")?id=@pet.ID" class="btn btn-default btn-xs waves-effect">
+                                            <i class="md-14 material-icons col-grey">pageview</i>
+                                        </a>
+                                        <a href="@Url.Action("Edit", "Pet")?id=@pet.ID" class="btn btn-default btn-xs waves-effect">
+                                            <i class="md-14 material-icons col-indigo">edit</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@Scripts.Render("~/Content/plugins/jquery-datatable/jquery.dataTables.js")
+@Scripts.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js")
+@Scripts.Render("~/Content/js/pages/tables/jquery-datatable.js")

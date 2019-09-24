@@ -146,6 +146,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PetController.cs" />
     <Compile Include="Controllers\VeterinaryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -159,14 +160,19 @@
     <Compile Include="Services\HomeService\IHomeService.cs" />
     <Compile Include="Services\LoginService\ILoginService.cs" />
     <Compile Include="Services\LoginService\LoginService.cs" />
+    <Compile Include="Services\PetService\IPetService.cs" />
+    <Compile Include="Services\PetService\PetService.cs" />
     <Compile Include="Services\ServiceService\IServiceService.cs" />
     <Compile Include="Services\ServiceService\ServiceService.cs" />
     <Compile Include="Services\VeterinaryService\IVeterinaryService.cs" />
     <Compile Include="Services\VeterinaryService\VeterinaryService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\EditableVeterinaryViewModel.cs" />
+    <Compile Include="ViewModel\PetViewModels\CreatePetViewModel.cs" />
+    <Compile Include="ViewModel\PetViewModels\EditablePetViewModel.cs" />
+    <Compile Include="ViewModel\PetViewModels\PetViewModel.cs" />
+    <Compile Include="ViewModel\VeterinaryViewModels\EditableVeterinaryViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
-    <Compile Include="ViewModel\VeterinaryViewModel.cs" />
+    <Compile Include="ViewModel\VeterinaryViewModels\VeterinaryViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -3706,6 +3712,10 @@
     <Content Include="Views\Veterinary\Edit.cshtml" />
     <Content Include="Views\Veterinary\_EditableVeterinary.cshtml" />
     <Content Include="Views\Veterinary\Create.cshtml" />
+    <Content Include="Views\Pet\Index.cshtml" />
+    <Content Include="Views\Pet\Edit.cshtml" />
+    <Content Include="Views\Pet\Create.cshtml" />
+    <Content Include="Views\Pet\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
