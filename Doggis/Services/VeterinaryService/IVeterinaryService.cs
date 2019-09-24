@@ -11,8 +11,9 @@ namespace Doggis.Services
     {
         List<VeterinaryViewModel> GetVeterinaries();
         bool DisableVet(Guid id, bool status);
-        EditVeterinaryViewModel GetVeterinary(Guid id);
+        EditableVeterinaryViewModel GetVeterinary(Guid id);
         List<Species> SetAllowedSpecies(List<int> allowedSpecies, Dictionary<int, string> species);
-        bool UpdateVet(EditVeterinaryViewModel model);
+        bool UpdateVet(EditableVeterinaryViewModel model);
+        bool CreateVet(EditableVeterinaryViewModel model);
     }
 }

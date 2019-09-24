@@ -1,5 +1,7 @@
 ﻿@model List<Doggis.ViewModel.VeterinaryViewModel>
-
+@{ 
+    ViewBag.Title = "Visualizar Veterinários";
+}
 @Styles.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css")
 
 <!-- Exportable Table -->
@@ -12,10 +14,10 @@
                 </h2>
             </div>
             <div class="body">
-                <button type="button" class="btn btn-primary waves-effect">
+                <a href="@Url.Action("Create", "Veterinary")" class="btn btn-primary waves-effect">
                     <i class="material-icons">add</i>
                     <span>Novo</span>
-                </button>
+                </a>
             </div>            
             <div class="body table-responsive">
                 <table class="table table-striped">
@@ -45,10 +47,10 @@
                                     <td class="align-center">@vet.DepartureTime</td>
                                     <td class="align-center">@vet.AllowedSpeciesCount</td>
                                     <td class="align-center">@vet.Status</td>
-                                    <td class="align-center" >
-                                        <button type="button" class="btn btn-default btn-xs waves-effect" onclick="location.href='@Url.Action("Edit", "Veterinary")?id=@vet.ID'">
+                                    <td class="align-center">
+                                        <a href="@Url.Action("Edit", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-indigo">edit</i>
-                                        </button>
+                                        </a>
                                     </td>
                                 </tr>
                             }

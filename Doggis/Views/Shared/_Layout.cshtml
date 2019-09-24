@@ -223,10 +223,10 @@
     </section>
     <script>
         $(document).ready(function () {
-            var alertMessage = '@(ViewBag.AlertMessage)';
-            var alertType = '@(ViewBag.AlertType)';
-            if (alertMessage != '' && alertType != '') {
-                showNotification(alertType, alertMessage, "bottom", "right", "animated bounceInDown", "animated bounceOutDown");
+            var notificationMessage = '@(ViewBag.NotificationMessage)';
+            var notificationType = '@(ViewBag.NotificationType)';
+            if (notificationMessage != '' && notificationType != '') {
+                showNotification(notificationType, notificationMessage, "bottom", "right", "animated bounceInDown", "animated bounceOutDown");
             }
         });
     </script>

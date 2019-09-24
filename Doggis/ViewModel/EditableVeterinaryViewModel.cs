@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Doggis.ViewModel
 {
-    public class EditVeterinaryViewModel
+    public class EditableVeterinaryViewModel
     {
         [HiddenInput]
         public Guid ID { get; set; }
@@ -30,11 +30,11 @@ namespace Doggis.ViewModel
 
         [Display(Name = "Horário de Entrada")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public TimeSpan EntryTime { get; set; }
+        public TimeSpan? EntryTime { get; set; }
 
         [Display(Name = "Horário de Saída")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        public TimeSpan DepartureTime { get; set; }
+        public TimeSpan? DepartureTime { get; set; }
 
         [Display(Name = "Status")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]

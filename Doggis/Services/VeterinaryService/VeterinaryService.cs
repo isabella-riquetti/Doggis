@@ -12,7 +12,9 @@ namespace Doggis.Services
 {
     public class VeterinaryService : IVeterinaryService
     {
+
         private readonly IUnitOfWork _unitOfWork;
+
         public VeterinaryService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -46,12 +48,12 @@ namespace Doggis.Services
             return true;
         }
 
-        public EditVeterinaryViewModel GetVeterinary(Guid id)
+        public EditableVeterinaryViewModel GetVeterinary(Guid id)
         {
             var vet = _unitOfWork.User.FirstOrDefault(v => v.ID == id);
             if(vet != null)
             {
-                return new EditVeterinaryViewModel()
+                return new EditableVeterinaryViewModel()
                 {
                     ID = vet.ID,
                     Name = vet.Name,
@@ -85,7 +87,7 @@ namespace Doggis.Services
             return list;
         }
 
-        public bool UpdateVet(EditVeterinaryViewModel model)
+        public bool UpdateVet(EditableVeterinaryViewModel model)
         {
             var vet = _unitOfWork.User.FirstOrDefault(v => v.ID == model.ID);
             if(vet != null)
@@ -117,6 +119,43 @@ namespace Doggis.Services
             }
 
             return false;
+        }
+
+        public bool CreateVet(EditableVeterinaryViewModel model)
+        {
+            try
+            {
+                var vet = new Data.Models.User()
+                {
+                    ID = Guid.NewGuid(),
+                    Name = model.Name,
+                    Status = model.Status,
+                    Identification = model.Identification,
+                    NationalInsuranceNumber = model.NationalInsuranceNumber,
+                    CouncilNumber = model.CouncilNumber,
+                    EntryTime = model.EntryTime,
+                    DepartureTime = model.DepartureTime,
+                    Type = Enums.User.UserType.Vet
+                };
+                _unitOfWork.User.Add(vet);
+
+                foreach (var specie in model.AllowedSpecies)
+                {
+                    _unitOfWork.VeterinaryAllowedSpecies.Add(new Data.Models.VeterinaryAllowedSpecie()
+                    {
+                        ID = Guid.NewGuid(),
+                        VeterinaryID = vet.ID,
+                        Specie = (Enums.Pet.Specie)specie
+                    });
+                }
+
+                _unitOfWork.Commit();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

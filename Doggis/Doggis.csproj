@@ -164,7 +164,7 @@
     <Compile Include="Services\VeterinaryService\IVeterinaryService.cs" />
     <Compile Include="Services\VeterinaryService\VeterinaryService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\EditVeterinaryViewModel.cs" />
+    <Compile Include="ViewModel\EditableVeterinaryViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModel.cs" />
   </ItemGroup>
@@ -3704,6 +3704,8 @@
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Veterinary\Index.cshtml" />
     <Content Include="Views\Veterinary\Edit.cshtml" />
+    <Content Include="Views\Veterinary\_EditableVeterinary.cshtml" />
+    <Content Include="Views\Veterinary\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,129 @@
+﻿@model Doggis.ViewModel.EditableVeterinaryViewModel
+
+@Styles.Render("~/Content/plugins/multi-select/css/multi-select.css")
+@Styles.Render("~/Content/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css")
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Editar
+                </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm())
+                {
+                    <div class="row clearfix">
+                        <div class="col-md-10">
+                            <b>Nome</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Name)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Status</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    <input type="checkbox" name="Status" id="Status" checked="@Model.Status" class="filled-in chk-col-light-green" value="true" />
+                                    <label for="Status">Ativo</label>
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Status)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-4">
+                            <b>RG</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.Identification, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Identification)
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <b>CPF</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.NationalInsuranceNumber, new { @class = "form-control cpf" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.NationalInsuranceNumber)
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <b>Número Conselho de Veterinária</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.CouncilNumber, new { @class = "form-control" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.CouncilNumber)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-6">
+                            <b>Horário de Entrada</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.EntryTime, new { type = "time", @class = "form-control timepicker" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.EntryTime)
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <b>Horário de Saída</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextBoxFor(m => m.DepartureTime, new { type = "time", @class = "form-control timepicker" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.DepartureTime)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <b>Espécies que o veterinário trata</b>
+                            <select id="optgroup" class="ms" name="AllowedSpecies" multiple="multiple">
+                                @{
+                                    foreach (var item in ViewBag.Species)
+                                    {
+                                        <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+                                    }
+                                }
+                            </select>
+                            @Html.ValidationMessageFor(x => x.AllowedSpecies, null, new { @class = "erro-message" })
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Salvar</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@Scripts.Render("~/Content/plugins/momentjs/moment.js")
+@Scripts.Render("~/Content/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")
+@Scripts.Render("~/Content/plugins/multi-select/js/jquery.multi-select.js")
+@Scripts.Render("~/Content/plugins/jquery-inputmask/jquery.inputmask.bundle.js")
+
+<script>
+    $(document).ready(function () {
+        $('#optgroup').multiSelect({ selectableOptgroup: true });
+        $('.timepicker').bootstrapMaterialDatePicker({
+            format: 'HH:mm',
+            clearButton: true,
+            date: false
+        });
+
+        $(document).find('.cpf').inputmask('999.999.999-99', { placeholder: '___.___.___-__' });
+    });
+</script>

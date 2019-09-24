@@ -11,6 +11,7 @@ namespace Doggis.Controllers
 {
     public class VeterinaryController : Controller
     {
+
         private readonly IVeterinaryService _veterinaryService;
 
         public VeterinaryController(IVeterinaryService veterinaryService)
@@ -19,13 +20,10 @@ namespace Doggis.Controllers
         }
 
         // GET: Veterinary
-        public ActionResult Index(string alertMessage, string alertType)
+        public ActionResult Index()
         {
-            if(!String.IsNullOrEmpty(alertMessage) && !String.IsNullOrEmpty(alertType))
-            {
-                ViewBag.AlertMessage = alertMessage;
-                ViewBag.AlertType = alertType;
-            }
+            SetViewBagMessage();
+
             var veterinaries = _veterinaryService.GetVeterinaries();
             return View(veterinaries);
         }
@@ -47,7 +45,7 @@ namespace Doggis.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(EditVeterinaryViewModel model)
+        public ActionResult Edit(EditableVeterinaryViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -59,10 +57,70 @@ namespace Doggis.Controllers
             }
 
             var result = _veterinaryService.UpdateVet(model);
-            if(result)
-                return RedirectToAction("Index", new { alertMessage = "Veterinário editado com sucesso!", alertType = "alert-sucess" });
+            if (result)
+            {
+                SetSessionNotification("Veterinário editado com sucesso!", "alert-success");
+                return RedirectToAction("Index");
+            }
             else
-                return RedirectToAction("Index", new { alertMessage = "Não foi possível editar o veterinário.", alertType = "alert-danger" });
+            {
+                SetSessionNotification("Não foi possível editar o veterinário.", "alert-danger");
+                return RedirectToAction("Index");
+            }
+        }
+
+        public ActionResult Create()
+        {
+            var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+            var speciesWithSelected = _veterinaryService.SetAllowedSpecies(null, allSpecies);
+            ViewBag.Species = speciesWithSelected;
+
+            return View(new EditableVeterinaryViewModel() { ID = Guid.NewGuid(), Status = true});
+        }
+
+        [HttpPost]
+        public ActionResult Create(EditableVeterinaryViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+                var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
+                ViewBag.Species = speciesWithSelected;
+
+                return View(model);
+            }
+
+            var result = _veterinaryService.CreateVet(model);
+            if (result)
+            {
+                SetSessionNotification("Veterinário criado com sucesso!", "alert-success");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                SetSessionNotification("Não foi possível criar o veterinário.", "alert-danger");
+                return RedirectToAction("Index");
+            }
+        }
+
+        public void SetSessionNotification(string message, string type)
+        {
+            Session["NotificationMessage"] = message;
+            Session["NotificationType"] = type;
+        }
+
+        public void SetViewBagMessage()
+        {
+            var notificationMessage = Session["NotificationMessage"]?.ToString();
+            if (!String.IsNullOrEmpty(notificationMessage))
+            {
+                var notificationType = Session["NotificationType"]?.ToString();
+
+                ViewBag.NotificationMessage = notificationMessage;
+                ViewBag.NotificationType = notificationType;
+                Session["NotificationMessage"] = "";
+                Session["NotificationType"] = "";
+            }
         }
     }
 }
