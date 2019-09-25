@@ -10,7 +10,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Agendamentos
+                    Avaliação de Serviços
                 </h2>
             </div>
             <div class="body table-responsive">
@@ -43,7 +43,7 @@
                                             }
                                             else
                                             {
-                                                <a href="@Url.Action("Score", "ServiceSchedule")?id=@schedule.ID" class="btn btn-default btn-xs waves-effect">
+                                                <a href="@Url.Action("Avaliate", "ServiceSchedule")?serviceScheduleId=@schedule.ID" class="btn btn-default btn-xs waves-effect">
                                                     <i class="md-14 material-icons col-yellow">star</i>
                                                 </a>
                                             }

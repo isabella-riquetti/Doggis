@@ -58,7 +58,7 @@
                     <div class="row clearfix">
                         <div class="col-md-4">
                             <b>Espécie</b>
-                            <select class="form-control show-tick" name="Specie" id="Specie">
+                            <select class="form-control show-tick" name="Specie" id="Specie" data-live-search="true">
                                 <option value="">-- Selecione uma espécie --</option>
                                 @foreach (var specie in ViewBag.Species)
                                 {
@@ -87,7 +87,7 @@
                             var visibily = Model.Specie == 0 ? "visible" : "hidden";
                             <div class="col-md-4 size-form-control @visibily" id="SizeColumn">
                                 <b>Portes</b>
-                                <select class="form-control show-tick" name="Size" id="Size">
+                                <select class="form-control show-tick" name="Size" id="Size" data-live-search="true">
                                     <option value="" selected>-- Selecione um porte --</option>
                                     @foreach (var specie in ViewBag.Sizes)
                                     {
@@ -135,7 +135,6 @@
 </div>
 
 @Scripts.Render("~/Content/plugins/autosize/autosize.js")
-@Scripts.Render("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")
 
 <script>
     autosize($('textarea.auto-growth'));

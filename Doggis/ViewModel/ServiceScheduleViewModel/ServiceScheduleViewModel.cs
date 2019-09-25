@@ -17,5 +17,6 @@ namespace Doggis.ViewModel
         public int Score { get; set; }
         public bool Scored { get; internal set; }
         public string StatusText { get; internal set; }
+        public bool Finished { get; internal set; }
     }
 }

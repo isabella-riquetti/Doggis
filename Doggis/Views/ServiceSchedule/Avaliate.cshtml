@@ -1,0 +1,85 @@
+﻿@model Doggis.ViewModel.UserAvaliationViewModel
+@{
+    ViewBag.Title = "Avaliar Profissional";
+}
+
+@Styles.Render("~/Content/plugins/sweetalert/sweetalert.css")
+@Styles.Render("~/Content/plugins/ion-rangeslider/css/ion.rangeSlider.css")
+@Styles.Render("~/Content/plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css")
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Editar
+                </h2>
+            </div>
+            <div class="body">
+                @using (Html.BeginForm())
+                {
+                    @Html.HiddenFor(m => m.ServiceScheduleID)
+                    @Html.HiddenFor(m => m.ClientID)
+                <div class="row clearfix">
+                    <div class="col-md-2">
+                        <b>Responsável</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.ResponsibleName)
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <b>Data e Hora</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.ScheduleText)
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <b>Serviço</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.ServiceName)
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <b>Pet</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.PetName)
+                        </div>
+                    </div>
+                </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <div class="irs-demo">
+                                <b>Nota para o serviço [1 a 10]</b>
+                                <input type="text" Name="Score" id="Score" value="" />
+                            </div>
+                            @Html.ValidationMessageFor(x => x.Score)
+                        </div>
+                    </div>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <b>Descrição</b>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.TextAreaFor(m => m.Description, new { @class = "form-control", @maxlength = "500", @minlength = "20" })
+                                </div>
+                                @Html.ValidationMessageFor(x => x.Description)
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Enviar Nota</button>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/Content/plugins/sweetalert/sweetalert.min.js")
+@Scripts.Render("~/Content/plugins/ion-rangeslider/js/ion.rangeSlider.js")
+<script>
+    var aux = @Model.Score;
+    console.log(aux);
+    $("#Score").ionRangeSlider({
+        grid: true,
+        from: @Model.Score,
+        values: ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]
+    });
+</script>

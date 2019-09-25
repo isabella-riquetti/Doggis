@@ -28,43 +28,48 @@ namespace Doggis.Controllers
             return View(serviceScheduçes);
         }
 
-        public ActionResult Avaliate()
+        public ActionResult Avaliate(Guid? serviceScheduleId)
         {
-            //GetViewBags();
-            //ViewBag.Clients = _petService.GetActiveClient();
+            if(serviceScheduleId == null)
+            {
+                SetSessionNotification("Não foi possível localizar o serviço.", "alert-danger");
+                return RedirectToAction("Index");
+            }
 
-            //return View(new CreatePetViewModel() { ID = Guid.NewGuid(), Status = true });
-            return View();
+            var serviceSchedule = _serviceScheduleService.GetServiceSchedule((Guid)serviceScheduleId);
+            if (serviceSchedule == null)
+            {
+                SetSessionNotification("Não foi possível localizar o serviço.", "alert-danger");
+                return RedirectToAction("Index");
+            }
+            return View(serviceSchedule);
         }
 
         [HttpPost]
-        public ActionResult Avaliate(CreatePetViewModel model)
+        public ActionResult Avaliate(UserAvaliationViewModel model)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    GetViewBags();
-            //    ViewBag.Clients = _petService.GetActiveClient();
-            //    return View(model);
-            //}
+            if (!ModelState.IsValid)
+            {
+                var serviceSchedule = _serviceScheduleService.GetServiceSchedule((Guid)model.ServiceScheduleID, model.Score, model.Description);
+                if (serviceSchedule == null)
+                {
+                    SetSessionNotification("Não foi possível localizar o serviço.", "alert-danger");
+                    return RedirectToAction("Index");
+                }
+                return View(serviceSchedule);
+            }
 
-            //var result = _petService.CreatePet(model);
-            //if (result)
-            //{
-            //    SetSessionNotification("Pet criado com sucesso!", "alert-success");
-            //    return RedirectToAction("Index");
-            //}
-            //else
-            //{
-            //    SetSessionNotification("Não foi possível criar o pet.", "alert-danger");
-            //    return RedirectToAction("Index");
-            //}
-            return View();
-        }
-
-        public void GetViewBags()
-        {
-            ViewBag.Species = Helpers.EnumDictionary<Enums.Pet.Specie>();
-            ViewBag.Sizes = Helpers.EnumDictionary<Enums.Pet.Size>();
+            var result = _serviceScheduleService.CreateAvaliation(model);
+            if (result)
+            {
+                SetSessionNotification("Avaliação realizada com sucesso!", "alert-success");
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                SetSessionNotification("Não foi possível enviar a avaliação.", "alert-danger");
+                return RedirectToAction("Index");
+            }
         }
 
         public void SetSessionNotification(string message, string type)

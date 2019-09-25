@@ -13,7 +13,7 @@
 
     @Styles.Render("https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext")
     @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
-
+    
     @Styles.Render("~/Content/plugins/bootstrap/css/bootstrap.css")
     @Styles.Render("~/Content/plugins/node-waves/waves.css")
     @Styles.Render("~/Content/plugins/animate-css/animate.css")
@@ -69,7 +69,7 @@
             <div class="menu">
                 <ul class="list">
                     @{
-                        <li class="active">
+                        <li>
                             <a href="@Url.Action("Index", "Home")">
                                 <i class="material-icons">home</i>
                                 <span>Ínicio</span>
@@ -96,7 +96,7 @@
                                     <span>Promoções</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="@Url.Action("Index", "Veterinary")">
                                     <i class="material-icons">healing</i>
                                     <span>Veterinários</span>
@@ -144,7 +144,7 @@
                                     <span>Clientes</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="@Url.Action("Index", "Pet")">
                                     <i class="material-icons">pets</i>
                                     <span>Pets</span>
@@ -183,7 +183,7 @@
                                     <span>Consultar Pataz</span>
                                 </a>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="@Url.Action("Index", "ServiceSchedule")">
                                     <i class="material-icons">star</i>
                                     <span>Avaliar Profissional</span>

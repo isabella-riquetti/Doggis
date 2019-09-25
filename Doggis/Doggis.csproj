@@ -174,6 +174,7 @@
     <Compile Include="ViewModel\PetViewModels\EditablePetViewModel.cs" />
     <Compile Include="ViewModel\PetViewModels\PetViewModel.cs" />
     <Compile Include="ViewModel\ServiceScheduleViewModel\ServiceScheduleViewModel.cs" />
+    <Compile Include="ViewModel\ServiceScheduleViewModel\UserAvaliationViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModels\EditableVeterinaryViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModels\VeterinaryViewModel.cs" />
@@ -3721,6 +3722,7 @@
     <Content Include="Views\Pet\Create.cshtml" />
     <Content Include="Views\Pet\Details.cshtml" />
     <Content Include="Views\ServiceSchedule\Index.cshtml" />
+    <Content Include="Views\ServiceSchedule\Avaliate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
