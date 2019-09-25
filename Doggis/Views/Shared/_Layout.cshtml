@@ -13,14 +13,15 @@
 
     @Styles.Render("https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext")
     @Styles.Render("https://fonts.googleapis.com/icon?family=Material+Icons")
-    
-    @Styles.Render("~/Content/plugins/bootstrap/css/bootstrap.css")
-    @Styles.Render("~/Content/plugins/node-waves/waves.css")
-    @Styles.Render("~/Content/plugins/animate-css/animate.css")
+
+    @Styles.Render("~/Content/plugins/bootstrap/css/bootstrap.min.css")
+    @Styles.Render("~/Content/plugins/node-waves/waves.min.css")
+    @Styles.Render("~/Content/plugins/animate-css/animate.min.css")
     @Styles.Render("~/Content/plugins/morrisjs/morris.css")
-    @Styles.Render("~/Content/css/style.css")
-    @Styles.Render("~/Content/css/themes/theme-red.css")
-    @Styles.Render("~/Content/plugins/bootstrap-select/css/bootstrap-select.css")
+    @Styles.Render("~/Content/css/style.min.css")
+    @Styles.Render("~/Content/css/themes/theme-red.min.css")
+    @Styles.Render("~/Content/plugins/bootstrap-select/css/bootstrap-select.min.css")
+    @Styles.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.min.css")
 </head>
 
 <body class="theme-red">
@@ -197,17 +198,18 @@
     </section>
 
     @Scripts.Render("~/Content/plugins/jquery/jquery.min.js")
-    @Scripts.Render("~/Content/plugins/bootstrap/js/bootstrap.js")
-    @Scripts.Render("~/Content/plugins/bootstrap-select/js/bootstrap-select.js")
+    @Scripts.Render("~/Content/plugins/bootstrap/js/bootstrap.min.js")
+    @Scripts.Render("~/Content/plugins/bootstrap-select/js/bootstrap-select.min.js")
     @Scripts.Render("~/Content/plugins/jquery-slimscroll/jquery.slimscroll.js")
-    @Scripts.Render("~/Content/plugins/node-waves/waves.js")
-    @Scripts.Render("~/Content/plugins/jquery-countto/jquery.countTo.js")
-    @Scripts.Render("~/Content/plugins/raphael/raphael.min.js")
-    @Scripts.Render("~/Content/plugins/morrisjs/morris.js")
-    @Scripts.Render("~/Content/plugins/chartjs/Chart.bundle.js")
+    @Scripts.Render("~/Content/plugins/node-waves/waves.min.js")
+    @Scripts.Render("~/Content/plugins/morrisjs/morris.min.js")
+    @Scripts.Render("~/Content/plugins/chartjs/Chart.bundle.min.js")
     @Scripts.Render("~/Content/js/admin.js")
     @Scripts.Render("~/Content/js/script.js")
-    @Scripts.Render("~/Content/plugins/bootstrap-notify/bootstrap-notify.js")
+    @Scripts.Render("~/Content/plugins/jquery-sparkline/jquery.sparkline.js")
+    @Scripts.Render("~/Content/plugins/bootstrap-notify/bootstrap-notify.min.js")
+    @Scripts.Render("~/Content/plugins/jquery-datatable/jquery.dataTables.js")
+    @Scripts.Render("~/Content/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js")
 
     <section class="content">
         <div class="container-fluid">
@@ -223,7 +225,5 @@
             }
         });
     </script>
-
 </body>
-
 </html>

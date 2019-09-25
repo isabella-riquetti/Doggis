@@ -43,7 +43,7 @@ namespace Doggis.Controllers
             }
             else
             {
-                return View(new HomeViewModel()
+                var aux = new HomeViewModel()
                 {
                     Card1Icon = "schedule",
                     Card1Title = "AGENDAMENTOS FUTUROS",
@@ -57,7 +57,9 @@ namespace Doggis.Controllers
                     Card4Icon = "monetization_on",
                     Card4Title = "PEDIDOS FINALIZADOS",
                     Card4Value = _homeService.GetOrderCount().ToString()
-                });
+                };
+
+                return View(aux);
             }
         }
 

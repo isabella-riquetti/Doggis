@@ -3,7 +3,6 @@
     ViewBag.Title = "Avaliar Profissional";
 }
 
-@Styles.Render("~/Content/plugins/sweetalert/sweetalert.css")
 @Styles.Render("~/Content/plugins/ion-rangeslider/css/ion.rangeSlider.css")
 @Styles.Render("~/Content/plugins/ion-rangeslider/css/ion.rangeSlider.skinFlat.css")
 <div class="row clearfix">
@@ -72,11 +71,8 @@
     </div>
 </div>
 
-@Scripts.Render("~/Content/plugins/sweetalert/sweetalert.min.js")
-@Scripts.Render("~/Content/plugins/ion-rangeslider/js/ion.rangeSlider.js")
+@Scripts.Render("~/Content/plugins/ion-rangeslider/js/ion.rangeSlider.min.js")
 <script>
-    var aux = @Model.Score;
-    console.log(aux);
     $("#Score").ionRangeSlider({
         grid: true,
         from: @Model.Score,
