@@ -391,6 +391,7 @@
     <Content Include="Content\plugins\sweetalert\sweetalert-dev.js" />
     <Content Include="Content\plugins\sweetalert\sweetalert.css" />
     <Content Include="Content\plugins\sweetalert\sweetalert.min.js" />
+    <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
