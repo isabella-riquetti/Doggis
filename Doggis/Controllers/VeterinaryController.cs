@@ -40,6 +40,7 @@ namespace Doggis.Controllers
             var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
             var speciesWithSelected = _veterinaryService.SetAllowedSpecies(vet.AllowedSpecies, allSpecies);
             ViewBag.Species = speciesWithSelected;
+            ViewBag.ButtonText = "Editar";
 
             return View(vet);
         }
@@ -53,6 +54,7 @@ namespace Doggis.Controllers
                 var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
                 ViewBag.Species = speciesWithSelected;
 
+                ViewBag.ButtonText = "Eidtar";
                 return View(model);
             }
 
@@ -74,6 +76,7 @@ namespace Doggis.Controllers
             var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
             var speciesWithSelected = _veterinaryService.SetAllowedSpecies(null, allSpecies);
             ViewBag.Species = speciesWithSelected;
+            ViewBag.ButtonText = "Criar";
 
             return View(new EditableVeterinaryViewModel() { ID = Guid.NewGuid(), Status = true});
         }
@@ -87,6 +90,7 @@ namespace Doggis.Controllers
                 var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
                 ViewBag.Species = speciesWithSelected;
 
+                ViewBag.ButtonText = "Criar";
                 return View(model);
             }
 

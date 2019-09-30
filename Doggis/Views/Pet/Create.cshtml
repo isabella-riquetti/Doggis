@@ -8,7 +8,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Editar
+                    Criar
                 </h2>
             </div>
             <div class="body">
@@ -139,7 +139,15 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Salvar</button>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("Index", "Pet")" class="btn btn-default waves-effect pull-left">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Voltar para Lista</span>
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg waves-effect pull-right">Criar</button>
+                        </div>
+                    </div>
                 }
             </div>
         </div>

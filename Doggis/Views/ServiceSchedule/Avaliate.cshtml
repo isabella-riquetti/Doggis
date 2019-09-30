@@ -10,7 +10,7 @@
         <div class="card">
             <div class="header">
                 <h2>
-                    Editar
+                    Avaliar
                 </h2>
             </div>
             <div class="body">
@@ -18,32 +18,32 @@
                 {
                     @Html.HiddenFor(m => m.ServiceScheduleID)
                     @Html.HiddenFor(m => m.ClientID)
-                <div class="row clearfix">
-                    <div class="col-md-2">
-                        <b>Responsável</b>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m.ResponsibleName)
+                    <div class="row clearfix">
+                        <div class="col-md-2">
+                            <b>Responsável</b>
+                            <div class="form-group">
+                                @Html.DisplayFor(m => m.ResponsibleName)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Data e Hora</b>
+                            <div class="form-group">
+                                @Html.DisplayFor(m => m.ScheduleText)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Serviço</b>
+                            <div class="form-group">
+                                @Html.DisplayFor(m => m.ServiceName)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <b>Pet</b>
+                            <div class="form-group">
+                                @Html.DisplayFor(m => m.PetName)
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <b>Data e Hora</b>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m.ScheduleText)
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <b>Serviço</b>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m.ServiceName)
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <b>Pet</b>
-                        <div class="form-group">
-                            @Html.DisplayFor(m => m.PetName)
-                        </div>
-                    </div>
-                </div>
                     <div class="row clearfix">
                         <div class="col-md-12">
                             <div class="irs-demo">
@@ -64,7 +64,15 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-lg m-t-15 waves-effect">Enviar Nota</button>
+                    <div class="row clearfix">
+                        <div class="col-md-12">
+                            <a href="@Url.Action("Index", "ServiceSchedule")" class="btn btn-default waves-effect pull-left">
+                                <i class="material-icons">arrow_back</i>
+                                <span>Voltar para Lista</span>
+                            </a>
+                            <button type="submit" class="btn btn-primary btn-lg waves-effect pull-right">Enviar Nota</button>
+                        </div>
+                    </div>
                 }
             </div>
         </div>

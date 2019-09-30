@@ -2953,12 +2953,20 @@ button, input, select, a {
 }
 
 section.content {
+<<<<<<< HEAD
     margin: 25px 15px 0 315px;
     -moz-transition: 0.5s;
     -o-transition: 0.5s;
     -webkit-transition: 0.5s;
     transition: 0.5s
 }
+=======
+  margin: 70px 15px 0 315px;
+  -moz-transition: 0.5s;
+  -o-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition: 0.5s; }
+>>>>>>> 284c026... Melhorias
 
 .dashboard-flot-chart {
     height: 275px
