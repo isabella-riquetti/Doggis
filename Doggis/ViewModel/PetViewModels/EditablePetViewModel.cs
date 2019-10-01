@@ -20,10 +20,12 @@ namespace Doggis.ViewModel
         public int Specie { get; set; }
 
         [Display(Name = "Nome")]
+        [StringLength(255, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Name { get; set; }
 
         [Display(Name = "Raça")]
+        [StringLength(255, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Breed { get; set; }
 
@@ -31,9 +33,11 @@ namespace Doggis.ViewModel
         public int? Size { get; set; }
 
         [Display(Name = "Alegias")]
+        [StringLength(255, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         public string Alergies { get; set; }
 
         [Display(Name = "Descrição")]
+        [StringLength(1000, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         public string Description { get; set; }
 
         [Display(Name = "Permite Fotos")]

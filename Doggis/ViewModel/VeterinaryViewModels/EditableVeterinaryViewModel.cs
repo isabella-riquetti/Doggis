@@ -13,18 +13,22 @@ namespace Doggis.ViewModel
         public Guid ID { get; set; }
 
         [Display(Name = "Nome")]
+        [StringLength(255, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Name { get; set; }
 
         [Display(Name = "RG")]
+        [StringLength(13, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string Identification { get; set; }
 
         [Display(Name = "CPF")]
+        [StringLength(14, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string NationalInsuranceNumber { get; set; }
 
         [Display(Name = "Nº Conselho Vet")]
+        [StringLength(50, ErrorMessage = "O campo {0} não pode possuir mais do que {1} caracteres")]
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         public string CouncilNumber { get; set; }
 
