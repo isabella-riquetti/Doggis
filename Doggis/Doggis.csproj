@@ -306,6 +306,8 @@
     <Content Include="Content\plugins\morrisjs\package.json" />
     <Content Include="Content\plugins\morrisjs\README.md" />
     <Content Include="Content\plugins\node-waves\waves.min.js.map" />
+    <None Include="Properties\PublishProfiles\doggis - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\doggis - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
