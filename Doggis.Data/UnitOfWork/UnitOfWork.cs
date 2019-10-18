@@ -21,7 +21,6 @@ namespace Doggis.Data.UnitOfWork
             ServiceSchedule = new ServiceScheduleRepository(_context);
             User = new UserRepository(_context);
             UserAvaliation = new UserAvaliationRepository(_context);
-            VeterinaryAllowedSpecies = new VeterinaryAllowedSpeciesRepository(_context);
         }
 
         public IClientRepository Client { get; set; }
@@ -35,7 +34,6 @@ namespace Doggis.Data.UnitOfWork
         public IServiceScheduleRepository ServiceSchedule { get; set; }
         public IUserRepository User { get; set; }
         public IUserAvaliationRepository UserAvaliation { get; set; }
-        public IVeterinaryAllowedSpeciesRepository VeterinaryAllowedSpecies { get; set; }
 
         private bool _disposed;
 

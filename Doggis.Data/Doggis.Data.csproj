@@ -142,7 +142,6 @@
     <Compile Include="Models\Mapping\ServiceScheduleMap.cs" />
     <Compile Include="Models\Mapping\UserAvaliationMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
-    <Compile Include="Models\Mapping\VeterinaryAllowedSpecieMap.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderItem.cs" />
     <Compile Include="Models\Pet.cs" />
@@ -153,7 +152,6 @@
     <Compile Include="Models\ServiceSchedule.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserAvaliation.cs" />
-    <Compile Include="Models\VeterinaryAllowedSpecies.cs" />
     <Compile Include="Programmability\Functions\ScalarValuedFunctions.cs" />
     <Compile Include="Programmability\Functions\TableValuedFunctions.cs" />
     <Compile Include="Programmability\Helper\Helper.cs" />
@@ -181,8 +179,6 @@
     <Compile Include="Repository\UserAvaliationRepository\UserAvaliationRepository.cs" />
     <Compile Include="Repository\UserRepository\IUserRepository.cs" />
     <Compile Include="Repository\UserRepository\UserRepository.cs" />
-    <Compile Include="Repository\VeterinaryAllowedSpeciesRepository\IVeterinaryAllowedSpeciesRepository.cs" />
-    <Compile Include="Repository\VeterinaryAllowedSpeciesRepository\VeterinaryAllowedSpeciesRepository.cs" />
     <Compile Include="Repository\_Base\IRepositoryBase.cs" />
     <Compile Include="Repository\_Base\RepositoryBase.cs" />
     <Compile Include="Context\DoggisContext.cs" />

@@ -1,6 +1,7 @@
 ﻿using Doggis.Models;
 using Doggis.Services;
 using Doggis.ViewModel;
+using Enums.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +38,7 @@ namespace Doggis.Controllers
 
             var vet = _veterinaryService.GetVeterinary((Guid)id);
 
-            var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+            var allSpecies = EnumHelper.EnumDictionary<Enums.Pet.Specie>();
             var speciesWithSelected = _veterinaryService.SetAllowedSpecies(vet.AllowedSpecies, allSpecies);
             ViewBag.Species = speciesWithSelected;
             ViewBag.ButtonText = "Editar";
@@ -50,7 +51,7 @@ namespace Doggis.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+                var allSpecies = EnumHelper.EnumDictionary<Enums.Pet.Specie>();
                 var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
                 ViewBag.Species = speciesWithSelected;
 
@@ -73,7 +74,7 @@ namespace Doggis.Controllers
 
         public ActionResult Create()
         {
-            var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+            var allSpecies = EnumHelper.EnumDictionary<Enums.Pet.Specie>();
             var speciesWithSelected = _veterinaryService.SetAllowedSpecies(null, allSpecies);
             ViewBag.Species = speciesWithSelected;
             ViewBag.ButtonText = "Criar";
@@ -86,7 +87,7 @@ namespace Doggis.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var allSpecies = Helpers.EnumDictionary<Enums.Pet.Specie>();
+                var allSpecies = EnumHelper.EnumDictionary<Enums.Pet.Specie>();
                 var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
                 ViewBag.Species = speciesWithSelected;
 

@@ -26,6 +26,7 @@ namespace Doggis.Data.Models.Mapping
             Property(p => p.EntryTime).HasColumnName("EntryTime");
             Property(p => p.DepartureTime).HasColumnName("DepartureTime");
             Property(p => p.Status).HasColumnName("Status").IsRequired();
+            Property(p => p.VeterinaryAllowedSpecies).HasColumnName("VeterinaryAllowedSpecies");
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Doggis.Models;
 using Doggis.Services;
 using Doggis.ViewModel;
+using Enums.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -110,8 +111,8 @@ namespace Doggis.Controllers
 
         public void GetViewBags()
         {
-            ViewBag.Species = Helpers.EnumDictionary<Enums.Pet.Specie>();
-            ViewBag.Sizes = Helpers.EnumDictionary<Enums.Pet.Size>();
+            ViewBag.Species = EnumHelper.EnumDictionary<Enums.Pet.Specie>();
+            ViewBag.Sizes = EnumHelper.EnumDictionary<Enums.Pet.Size>();
         }
 
         public void SetSessionNotification(string message, string type)

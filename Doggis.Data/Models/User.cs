@@ -17,18 +17,17 @@ namespace Doggis.Data.Models
         public TimeSpan? EntryTime { get; set; }
         public TimeSpan? DepartureTime { get; set; }
         public bool Status { get; set; }
+        public Enums.Pet.Specie? VeterinaryAllowedSpecies { get; set; }
 
         public virtual ICollection<ServicePriceHistory> ServicesPriceHistoryCreatedBy { get; set; }
         public virtual ICollection<ServicePriceHistory> ServicesPriceHistoryDisabledBy { get; set; }
         public virtual ICollection<ServiceSchedule> ServiceSchedulesResponsibleFor { get; set; }
-        public virtual ICollection<VeterinaryAllowedSpecie> VeterinaryAllowedSpecies { get; set; }
 
         public User()
         {
             ServicesPriceHistoryCreatedBy = new List<ServicePriceHistory>();
             ServicesPriceHistoryDisabledBy = new List<ServicePriceHistory>();
             ServiceSchedulesResponsibleFor = new List<ServiceSchedule>();
-            VeterinaryAllowedSpecies = new List<VeterinaryAllowedSpecie>();
         }
     }
 }

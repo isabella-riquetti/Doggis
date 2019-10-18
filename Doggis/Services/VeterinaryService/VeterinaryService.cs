@@ -22,7 +22,7 @@ namespace Doggis.Services
 
         public List<VeterinaryViewModel> GetVeterinaries()
         {
-            return _unitOfWork.User.Get(u => u.Type == Enums.User.UserType.Vet).OrderByDescending(u => u.Status).ThenBy(u => u.Name).Select(u => new VeterinaryViewModel()
+            var vets = _unitOfWork.User.Get(u => u.Type == Enums.User.UserType.Vet).OrderByDescending(u => u.Status).ThenBy(u => u.Name).Select(u => new VeterinaryViewModel()
             {
                 ID = u.ID,
                 Name = u.Name,
@@ -32,8 +32,13 @@ namespace Doggis.Services
                 EntryTime = (TimeSpan)u.EntryTime,
                 DepartureTime = (TimeSpan)u.DepartureTime,
                 Status = u.Status ? "Ativo" : "Inativo",
-                AllowedSpeciesCount = u.VeterinaryAllowedSpecies.Count()
+                AllowedSpecies = u.VeterinaryAllowedSpecies
+                
             }).ToList();
+
+            vets.ForEach(u => u.AllowedSpeciesCount = u.AllowedSpecies != null ? EnumHelper.GetEnumsFlags<Enums.Pet.Specie>((Enums.Pet.Specie)u.AllowedSpecies, false).Count : 0);
+
+            return vets;
         }
 
         public bool DisableVet(Guid id, bool status)
@@ -63,7 +68,7 @@ namespace Doggis.Services
                     EntryTime = vet.EntryTime ?? new TimeSpan(),
                     DepartureTime = vet.DepartureTime ?? new TimeSpan(),
                     Status = vet.Status,
-                    AllowedSpecies = vet.VeterinaryAllowedSpecies.Select(s => (int)s.Specie).ToList()
+                    AllowedSpecies = vet.VeterinaryAllowedSpecies != null ? EnumHelper.GetEnumsFlags((Enums.Pet.Specie)vet.VeterinaryAllowedSpecies).Select(s => (int)s).ToList() : new List<int>()
                 };
             }
             return null;
@@ -99,20 +104,7 @@ namespace Doggis.Services
                 vet.CouncilNumber = model.CouncilNumber;
                 vet.EntryTime = model.EntryTime;
                 vet.DepartureTime = model.DepartureTime;
-
-                var currentAllowedSpecies = vet.VeterinaryAllowedSpecies.ToList();
-                var currentAllowedSpeciesValue = currentAllowedSpecies.Select(v => (int)v.Specie);
-
-                foreach (var newAllowedSpecie in model.AllowedSpecies.Where(a => !currentAllowedSpeciesValue.Contains(a)))
-                    _unitOfWork.VeterinaryAllowedSpecies.Add(new Data.Models.VeterinaryAllowedSpecie()
-                    {
-                        ID = Guid.NewGuid(),
-                        Specie = (Enums.Pet.Specie)newAllowedSpecie,
-                        VeterinaryID = vet.ID
-                    });
-
-                foreach (var oldAllowedSpecie in currentAllowedSpecies.Where(a => !model.AllowedSpecies.Contains((int)a.Specie)))
-                    _unitOfWork.VeterinaryAllowedSpecies.Delete(oldAllowedSpecie);
+                vet.VeterinaryAllowedSpecies = EnumHelper.ListEnumToEnumFlag(model.AllowedSpecies.Select(a => (Enums.Pet.Specie)a));
 
                 _unitOfWork.Commit();
                 return true;
@@ -135,24 +127,15 @@ namespace Doggis.Services
                     CouncilNumber = model.CouncilNumber,
                     EntryTime = model.EntryTime,
                     DepartureTime = model.DepartureTime,
-                    Type = Enums.User.UserType.Vet
+                    Type = Enums.User.UserType.Vet,
+                    VeterinaryAllowedSpecies = EnumHelper.ListEnumToEnumFlag(model.AllowedSpecies.Select(a => (Enums.Pet.Specie)a))
                 };
+
                 _unitOfWork.User.Add(vet);
-
-                foreach (var specie in model.AllowedSpecies)
-                {
-                    _unitOfWork.VeterinaryAllowedSpecies.Add(new Data.Models.VeterinaryAllowedSpecie()
-                    {
-                        ID = Guid.NewGuid(),
-                        VeterinaryID = vet.ID,
-                        Specie = (Enums.Pet.Specie)specie
-                    });
-                }
-
                 _unitOfWork.Commit();
                 return true;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Enums;
 
 namespace Doggis.ViewModel
 {
@@ -16,5 +17,6 @@ namespace Doggis.ViewModel
         public TimeSpan DepartureTime { get; set; }
         public string Status { get; internal set; }
         public int AllowedSpeciesCount { get; set; }
+        public Pet.Specie? AllowedSpecies { get; internal set; }
     }
 }

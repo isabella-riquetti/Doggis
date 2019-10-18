@@ -15,7 +15,6 @@ namespace Doggis.Data.UnitOfWork
         IServiceScheduleRepository ServiceSchedule { get; set; }
         IUserRepository User { get; set; }
         IUserAvaliationRepository UserAvaliation { get; set; }
-        IVeterinaryAllowedSpeciesRepository VeterinaryAllowedSpecies { get; set; }
 
         void Commit();
     }

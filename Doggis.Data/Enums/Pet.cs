@@ -9,18 +9,19 @@ namespace Enums
 {
     public class Pet
     {
+        [Flags]
         public enum Specie
         {
             [Description("Cachorro")]
-            Dog = 0,
+            Dog = 1 << 0,
             [Description("Gato")]
-            Cat = 1,
+            Cat = 1 << 1,
             [Description("Pássaro")]
-            Bird = 2,
+            Bird = 1 << 2,
             [Description("Coelho")]
-            Bunny = 3,
+            Bunny = 1 << 3,
             [Description("Cobra")]
-            Snake = 4
+            Snake = 1 << 4
         }
 
         public enum Size

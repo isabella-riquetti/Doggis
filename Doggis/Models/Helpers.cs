@@ -87,11 +87,5 @@ namespace Doggis.Models
             .OrderBy(f => f.Text)
             .ToList(), "Value", "Text");
         }
-
-        public static Dictionary<int, string> EnumDictionary<TEnum>() where TEnum : struct
-        {
-            return Enum.GetValues(typeof(TEnum)).Cast<TEnum>()
-                .ToDictionary(e => Convert.ToInt32(e), e => EnumHelper.GetDescription(e as System.Enum));
-        }
     }
 }
