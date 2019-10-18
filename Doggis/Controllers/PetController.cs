@@ -25,34 +25,41 @@ namespace Doggis.Controllers
         {
             SetViewBagMessage();
 
-            var veterinaries = _petService.GetPets();
-            return View(veterinaries);
+            var pets = _petService.GetPets();
+            return View(pets);
         }
 
         public ActionResult Edit(Guid? id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index", new { alertMessage = "Selecione um pet para editar", alertType = "alert-danger" });
+                SetSessionNotification("Selecione um pet para editar!", "alert-danger");
+                return RedirectToAction("Index");
             }
 
-            var vet = _petService.GetPet((Guid)id);
+            var pet = _petService.GetPet((Guid)id);
 
             GetViewBags();
 
-            return View(vet);
+            return View(pet);
         }
 
         public ActionResult Details(Guid? id)
         {
             if (id == null)
             {
-                return RedirectToAction("Index", new { alertMessage = "Selecione um pet para editar", alertType = "alert-danger" });
+                SetSessionNotification("Selecione um pet para ver os detalhes!", "alert-danger");
+                return RedirectToAction("Index");
             }
 
-            var vet = _petService.GetPetDetails((Guid)id);
+            var pet = _petService.GetPetDetails((Guid)id);
+            if (pet == null)
+            {
+                SetSessionNotification("Não foi encontrado um pet com o identificador informado.", "alert-danger");
+                return RedirectToAction("Index");
+            }
 
-            return View(vet);
+            return View(pet);
         }
 
         [HttpPost]
@@ -107,6 +114,21 @@ namespace Doggis.Controllers
                 SetSessionNotification("Não foi possível criar o pet.", "alert-danger");
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                SetSessionNotification("Selecione um pet para deletar!", "alert-danger");
+                return RedirectToAction("Index");
+            }
+
+            var result = _petService.DeletePet((Guid)id);
+            if(!result)
+                SetSessionNotification("Não foi possível exluir o pet!", "alert-danger");
+
+            return RedirectToAction("Index");
         }
 
         public void GetViewBags()

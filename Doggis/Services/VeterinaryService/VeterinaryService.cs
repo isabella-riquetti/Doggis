@@ -1,5 +1,6 @@
 ﻿using Doggis.Data.UnitOfWork;
 using Doggis.ViewModel;
+using Doggis.ViewModel.VeterinaryViewModels;
 using Enums.Helper;
 using System;
 using System.Collections.Generic;
@@ -139,6 +140,44 @@ namespace Doggis.Services
             {
                 return false;
             }
+        }
+
+        public bool DeleteVet(Guid id)
+        {
+            try
+            {
+                var vet = _unitOfWork.User.Get(p => p.ID == id).FirstOrDefault();
+                if (vet == null)
+                    return false;
+
+                _unitOfWork.User.Delete(vet);
+                _unitOfWork.Commit();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public VetViewModel GetVetDetails(Guid id)
+        {
+            var vet = _unitOfWork.User.FirstOrDefault(v => v.ID == id);
+            if (vet != null)
+            {
+                var vetDetails = new VetViewModel();
+                vetDetails.ID = vet.ID;
+                vetDetails.Name = vet.Name;
+                vetDetails.Identification = vet.Identification;
+                vetDetails.NationalInsuranceNumber = vet.NationalInsuranceNumber;
+                vetDetails.CouncilNumber = vet.CouncilNumber;
+                vetDetails.EntryTime = vet.EntryTime.Value.ToString();
+                vetDetails.DepartureTime = vet.DepartureTime.Value.ToString();
+                vetDetails.AllowedSpecies = EnumHelper.GetEnumsFlags<Enums.Pet.Specie>((Enums.Pet.Specie)vet.VeterinaryAllowedSpecies, false).Select(s => EnumHelper.GetDescription(s)).ToList();
+
+                return vetDetails;
+            }
+            return null;
         }
     }
 }

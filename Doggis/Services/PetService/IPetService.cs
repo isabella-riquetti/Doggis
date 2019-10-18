@@ -14,5 +14,6 @@ namespace Doggis.Services
         EditablePetViewModel GetPet(Guid id);
         bool UpdatePet(EditablePetViewModel model);
         bool CreatePet(CreatePetViewModel model);
+        bool DeletePet(Guid id);
     }
 }

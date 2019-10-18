@@ -136,5 +136,23 @@ namespace Doggis.Services
                 return false;
             }
         }
+
+        public bool DeletePet(Guid id)
+        {
+            try
+            {
+                var pet = _unitOfWork.Pet.Get(p => p.ID == id).FirstOrDefault();
+                if (pet == null)
+                    return false;
+
+                _unitOfWork.Pet.Delete(pet);
+                _unitOfWork.Commit();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

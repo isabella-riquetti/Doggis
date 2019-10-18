@@ -1,0 +1,64 @@
+﻿@model Doggis.ViewModel.VeterinaryViewModels.VetViewModel
+@{
+    ViewBag.Title = "Detalhes Vet";
+}
+
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Detalhes
+                </h2>
+            </div>
+            <div class="body">
+                <div class="row clearfix">
+                    <div class="col-md-12">
+                        <b>Nome</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Name, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>RG</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.Identification, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>CPF</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.NationalInsuranceNumber, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Nº do Conselho</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.CouncilNumber, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Horário de Entrada</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.EntryTime, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Horário de Saída</b>
+                        <div class="form-group">
+                            @Html.DisplayFor(m => m.DepartureTime, new { @class = "form-control", @disabled = "disabled" })
+                        </div>
+                        <b>Espécies tratadas</b>
+                        <div class="form-group">
+                            <ul>
+                                @foreach (var item in Model.AllowedSpecies)
+                                {
+                                    <li>@item</li>
+                                }
+                            </ul>
+                        </div>
+                        <a href="@Url.Action("Index", "Veterinary")" class="btn btn-default waves-effect pull-left">
+                            <i class="material-icons">arrow_back</i>
+                            <span>Voltar para Lista</span>
+                        </a>
+                        <a href="@Url.Action("Edit", "Veterinary")?id=@Model.ID" class="btn btn-info waves-effect pull-right">
+                            <i class="material-icons">edit</i>
+                            <span>Editar</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

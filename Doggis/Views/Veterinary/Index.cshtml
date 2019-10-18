@@ -46,8 +46,14 @@
                                     <td class="align-center">@vet.AllowedSpeciesCount</td>
                                     <td class="align-center">@vet.Status</td>
                                     <td class="align-center">
+                                        <a href="@Url.Action("Details", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
+                                            <i class="md-14 material-icons col-grey">pageview</i>
+                                        </a>
                                         <a href="@Url.Action("Edit", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-indigo">edit</i>
+                                        </a>
+                                        <a href="@Url.Action("Delete", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
+                                            <i class="md-14 material-icons col-red">clear</i>
                                         </a>
                                     </td>
                                 </tr>

@@ -33,7 +33,8 @@ namespace Doggis.Controllers
         {
             if (id == null)
             {
-                return RedirectToAction("Index", new { alertMessage = "Selecione um veterinário para editar", alertType = "alert-danger"});
+                SetSessionNotification("Selecione um veterinário para editar!", "alert-danger");
+                return RedirectToAction("Index");
             }
 
             var vet = _veterinaryService.GetVeterinary((Guid)id);
@@ -106,6 +107,39 @@ namespace Doggis.Controllers
                 SetSessionNotification("Não foi possível criar o veterinário.", "alert-danger");
                 return RedirectToAction("Index");
             }
+        }
+
+        public ActionResult Details(Guid? id)
+        {
+            if (id == null)
+            {
+                SetSessionNotification("Selecione um veterinário para ver os detalhes!", "alert-danger");
+                return RedirectToAction("Index");
+            }
+
+            var vet = _veterinaryService.GetVetDetails((Guid)id);
+            if(vet == null)
+            {
+                SetSessionNotification("Não foi encontrado um veterinário com o identificador informado.", "alert-danger");
+                return RedirectToAction("Index");
+            }
+
+            return View(vet);
+        }
+
+        public ActionResult Delete(Guid? id)
+        {
+            if (id == null)
+            {
+                SetSessionNotification("Selecione um vet para deletar!", "alert-danger");
+                return RedirectToAction("Index");
+            }
+
+            var result = _veterinaryService.DeleteVet((Guid)id);
+            if (!result)
+                SetSessionNotification("Não foi possível exluir o veterinário!", "alert-danger");
+
+            return RedirectToAction("Index");
         }
 
         public void SetSessionNotification(string message, string type)

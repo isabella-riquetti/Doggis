@@ -147,10 +147,10 @@
     $(document).ready(function () {
         $("#Specie").on("change", function () {
             var specie = $("#Specie option:selected").val();
-            if (specie != "0") {
+            if (specie != "1") {
                 $("#SizeColumn").addClass("hidden");
             }
-            else if(specie == "0") {
+            else if(specie == "1") {
                 $("#SizeColumn").removeClass("hidden");
             }
         });

@@ -178,6 +178,7 @@
     <Compile Include="ViewModel\VeterinaryViewModels\EditableVeterinaryViewModel.cs" />
     <Compile Include="ViewModel\HomeViewModel.cs" />
     <Compile Include="ViewModel\VeterinaryViewModels\VeterinaryViewModel.cs" />
+    <Compile Include="ViewModel\VeterinaryViewModels\VetViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\css\materialize.css" />
@@ -343,6 +344,7 @@
     <Content Include="Views\ServiceSchedule\Index.cshtml" />
     <Content Include="Views\ServiceSchedule\Avaliate.cshtml" />
     <Content Include="Views\Web.config" />
+    <Content Include="Views\Veterinary\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

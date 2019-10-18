@@ -1,4 +1,5 @@
 ﻿using Doggis.ViewModel;
+using Doggis.ViewModel.VeterinaryViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Doggis.Services
         List<Species> SetAllowedSpecies(List<int> allowedSpecies, Dictionary<int, string> species);
         bool UpdateVet(EditableVeterinaryViewModel model);
         bool CreateVet(EditableVeterinaryViewModel model);
+        bool DeleteVet(Guid id);
+        VetViewModel GetVetDetails(Guid id);
     }
 }
