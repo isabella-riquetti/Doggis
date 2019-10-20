@@ -52,9 +52,9 @@
                                         <a href="@Url.Action("Edit", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-indigo">edit</i>
                                         </a>
-                                        <a href="@Url.Action("Delete", "Veterinary")?id=@vet.ID" class="btn btn-default btn-xs waves-effect">
+                                        <button onclick="deleteVet('@vet.ID')" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-red">clear</i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             }
@@ -65,3 +65,16 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    function deleteVet(id){
+        var result = confirm("Você tem certeza que desejar excluir este veterinário?");
+        if (result == true) {
+            window.location.href = "@Url.Action("Delete", "Veterinary")?id=" + id;
+        }
+        else {
+            return;
+        }
+    }
+</script>

@@ -48,9 +48,9 @@
                                         <a href="@Url.Action("Edit", "Pet")?id=@pet.ID" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-indigo">edit</i>
                                         </a>
-                                        <a href="@Url.Action("Delete", "Pet")?id=@pet.ID" class="btn btn-default btn-xs waves-effect">
+                                        <button onclick="deletePet('@pet.ID')" class="btn btn-default btn-xs waves-effect">
                                             <i class="md-14 material-icons col-red">clear</i>
-                                        </a>
+                                        </button>
                                     </td>
                                 </tr>
                             }
@@ -63,6 +63,17 @@
 </div>
 
 <script>
+
+    function deletePet(id){
+        var result = confirm("Você tem certeza que desejar excluir este pet?");
+        if (result == true) {
+            window.location.href = "@Url.Action("Delete", "Pet")?id=" + id;
+        }
+        else {
+            return;
+        }
+    }
+
     $("table").dataTable({
         "ordering": false
     });
