@@ -56,7 +56,7 @@ namespace Doggis.Controllers
                 var speciesWithSelected = _veterinaryService.SetAllowedSpecies(model.AllowedSpecies, allSpecies);
                 ViewBag.Species = speciesWithSelected;
 
-                ViewBag.ButtonText = "Eidtar";
+                ViewBag.ButtonText = "Editar";
                 return View(model);
             }
 
